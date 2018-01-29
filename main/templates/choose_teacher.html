@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - 联系人</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            {% for each in new_data %}
+            <div class="col-sm-4">
+                <div class="contact-box">
+                        <div class="col-sm-4">
+                            <div class="text-center">
+                                <img alt="image" class="img-circle m-t-xs img-responsive" src={{each['image_url']}}>
+                                <div class="m-t-xs font-bold"><i class="fa fa-man"></i>性别:{{each['t_gender']}}</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <h3><strong>姓名:{{each['real_name']}}</strong></h3>
+                            <p>工龄:{{each['t_work_time']}}</p>
+                            <address>
+                                <p><i class="fa fa-phone"></i>联系电话:{{each['phone']}}</p>
+                                <br>
+                                <p><i class="fa fa-envelope"></i>邮箱:{{each['email']}}</p>
+                                <br>
+                        </address>
+
+
+                            <button class="select btn-block btn-primary full-width m-b" data-teacher={{each['teacher_id']}} disabled={{Button}}>选择教练</button>
+
+
+                        </div>
+                        <div class="clearfix"></div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+
+
+
+    <!-- 自定义js -->
+    <script src="/static/js/content.js?v=1.0.0"></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.contact-box').each(function () {
+                animationHover(this, 'pulse');
+            });
+        });
+    </script>
+
+<!--选择教练-->
+<script>
+    $(function() {
+        $('button.select').click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            teacher_id = this.getAttribute("data-teacher");
+            var data = {"teacher_id": teacher_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/choose_teacher',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+
+                    if (data.ok === 'yes') {
+                     alert('确定选择该教练吗?');
+
+                     }
+                    else{
+                     alert('选择失败');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+
+
+
+
+
+</body>
+
+</html>

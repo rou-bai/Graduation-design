@@ -19,4 +19,4 @@ class Teacher(db.Model):
 
 
     def __repr__(self):
-        return '<id:%r  真实名称:%r>' % (self.id, self.t_real_name)
+        return '<id:%r  工龄:%r>' % (self.id, self.t_work_time)

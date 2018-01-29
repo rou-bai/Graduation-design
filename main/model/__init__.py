@@ -134,6 +134,7 @@ def update_student_info(current_user, student, subject):
     db.session.add(student)
     db.session.commit()
 
+
 # 修改教练部分资料
 def update_teacher_info(current_user, teacher, work_time):
     teacher.t_work_time = work_time
@@ -174,3 +175,13 @@ def check_real_name(real_name):
             return
     else:
         return
+
+
+# 学生选择教练
+def student_select_teacher(teacher_id, user_id):
+    student = Student.query.filter_by(s_u_id=user_id).first()
+    student.s_teacher_id = teacher_id
+    db.session.add(student)
+    db.session.commit()
+
+

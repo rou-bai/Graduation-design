@@ -10,6 +10,7 @@ from flask_security.utils import login_user, logout_user
 from flask_login import login_required
 from flask_security import current_user
 from flask_security import roles_required, roles_accepted
+from .make_data import data_choose_teacher_info
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -319,3 +320,35 @@ def forget_password():
             return render_template('forget_password.html', form=form)
 
     return render_template('forget_password.html', form=form)
+
+
+@app.route('/student/choose_teacher', methods=['GET', 'POST'])
+def student_choose_teacher():
+    teacher = Teacher.query.all()
+    new_data = []
+    data_choose_teacher_info(new_data, teacher)
+    if request.method == 'GET':
+        if current_user.has_role('Student'):
+            student = Student.query.filter_by(s_u_id=current_user.id).first()
+            if student.s_teacher_id:
+
+                return render_template('choose_teacher.html', new_data=new_data, Button=True)
+            else:
+
+                return render_template('choose_teacher.html', new_data=new_data, Button=False)
+
+        else:
+            return redirect(url_for('no_permission'))
+    if request.method == 'POST':
+        data = request.get_json()
+        teacher_id = data['teacher_id']
+        student_select_teacher(teacher_id, current_user.id)
+        data = {}
+        data['ok'] = 'yes'
+        return jsonify(data)
+
+
+
+@app.route('/example', methods=['GET', 'POST'])
+def example():
+    return render_template('example.html')
