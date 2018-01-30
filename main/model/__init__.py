@@ -191,3 +191,5 @@ def teacher_select_car(car_id, teacher_id):
     car.car_teacher_id = teacher_id
     db.session.add(car)
     db.session.commit()
+
+

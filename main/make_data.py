@@ -20,3 +20,6 @@ def data_choose_teacher_info(data, teacher_list):
         number += 1
         data.append(info)
     return data
+
+
+

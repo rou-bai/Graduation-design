@@ -397,3 +397,22 @@ def teacher_choose_car_test3():
         teacher = Teacher.query.filter_by(t_u_id=current_user.id).first()
         teacher_select_car(car_id, teacher.id)
         return jsonify({'ok': 'yes'})
+
+
+@app.route('/student/cat/teacher_info', methods=['GET'])
+def student_cat_teacher_info():
+    if request.method == 'GET':
+        if current_user.has_role('Student'):
+            student = Student.query.filter_by(s_u_id=current_user.id).first()
+            teacher = Teacher.query.filter_by(id=student.s_teacher_id).first()
+            if teacher:
+                user = User.query.get(teacher.t_u_id)
+                test2_car = Car.query.filter(Car.car_teacher_id == teacher.id, Car.car_subject == '科目二').first()
+                test3_car = Car.query.filter(Car.car_teacher_id == teacher.id, Car.car_subject == '科目三').first()
+                return render_template('cat_teacher_info.html', real_name=user.real_name, phone=user.phone,
+                                       email=user.email, test2_car=test2_car.car_number, test3_car=test3_car.car_number,
+                                       Teacher_info=True)
+            else:
+                return render_template('cat_teacher_info.html', Teacher_info=False)
+        else:
+            return redirect(url_for('no_permission'))

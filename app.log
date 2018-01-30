@@ -1,4 +1,4 @@
-2018-01-30 14:57:50,209 ERROR: Exception on /teacher/choose_car/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+2018-01-30 17:41:55,486 ERROR: Exception on /student/cat/teacher_info [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,95 +12,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 356, in teacher_choose_car_test2
-    return render_template('choose_test2_car.html', cars=cars)
-  File "/usr/local/lib/python3.5/dist-packages/flask/templating.py", line 133, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 851, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 812, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 786, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/usr/lib/python3/dist-packages/jinja2/loaders.py", line 125, in load
-    code = environment.compile(source, name, filename)
-  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 565, in compile
-    self.handle_exception(exc_info, source_hint=source_hint)
-  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 754, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/lib/python3/dist-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/signit/桌面/Graduation design/main/templates/choose_test2_car.html", line 89, in template
-    <td>{{each.car_number}}</td>
-  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 470, in _parse
-    return Parser(self, source, name, encode_filename(filename)).parse()
-  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 897, in parse
-    result = nodes.Template(self.subparse(), lineno=1)
-  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 879, in subparse
-    rv = self.parse_statement()
-  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 121, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 189, in parse_for
-    body = self.parse_statements(('name:endfor', 'name:else'))
-  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 161, in parse_statements
-    self.fail_eof(end_tokens)
-  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 95, in fail_eof
-    return self._fail_ut_eof(None, stack, lineno)
-  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 81, in _fail_ut_eof
-    self.fail(' '.join(message), lineno)
-  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 50, in fail
-    raise exc(msg, lineno, self.name, self.filename)
-jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endfor' or 'else'. The innermost block that needs to be closed is 'for'.
-2018-01-30 15:08:06,639 ERROR: Exception on /teacher/choose_car/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 357, in teacher_choose_car_test2
-    if cars.car_teacher_id:
-AttributeError: 'list' object has no attribute 'car_teacher_id'
-2018-01-30 16:13:14,303 ERROR: Exception on /teacher/choose_car/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 356, in teacher_choose_car_test2
-    print(cars)
-  File "/home/signit/桌面/Graduation design/main/model/car.py", line 20, in __repr__
-    return '<上课人数:%r >' % (self.class_number)
-AttributeError: 'Car' object has no attribute 'class_number'
-2018-01-30 16:49:16,178 ERROR: Exception on /teacher/choose_car/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 356, in teacher_choose_car_test2
-    teacher_car = Car.query.filter(car_teacher_id=teacher.id, car_subject='科目二').first()
-TypeError: filter() got an unexpected keyword argument 'car_teacher_id'
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 407, in student_cat_teacher_info
+    teacher = Teacher.query.get(student.s_teacher_id)
+  File "/usr/local/lib/python3.5/dist-packages/sqlalchemy/orm/query.py", line 871, in get
+    ident, loading.load_on_ident)
+  File "/usr/local/lib/python3.5/dist-packages/sqlalchemy/orm/query.py", line 882, in _get_impl
+    if len(ident) != len(mapper.primary_key):
+TypeError: object of type 'NoneType' has no len()
