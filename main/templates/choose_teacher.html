@@ -41,9 +41,9 @@
                                 <br>
                         </address>
 
-
-                            <button class="select btn-block btn-primary full-width m-b" data-teacher={{each['teacher_id']}} disabled={{Button}}>选择教练</button>
-
+                             {% if Button %}
+                            <button class="select btn-block btn-primary full-width m-b" data-teacher={{each['teacher_id']}}>选择教练</button>
+                             {% endif %}
 
                         </div>
                         <div class="clearfix"></div>

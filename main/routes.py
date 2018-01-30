@@ -204,7 +204,6 @@ def update_person_data1():
                 flash('性别格式错误')
                 return render_template('update_person_data1.html', Student=False, Teacher=True, form=form)
 
-
         if current_user.has_role('Admin'):
             user = User.query.get(current_user.id)
             if check_gender(gender):
@@ -332,10 +331,10 @@ def student_choose_teacher():
             student = Student.query.filter_by(s_u_id=current_user.id).first()
             if student.s_teacher_id:
 
-                return render_template('choose_teacher.html', new_data=new_data, Button=True)
+                return render_template('choose_teacher.html', new_data=new_data, Button=False)
             else:
 
-                return render_template('choose_teacher.html', new_data=new_data, Button=False)
+                return render_template('choose_teacher.html', new_data=new_data, Button=True)
 
         else:
             return redirect(url_for('no_permission'))
@@ -348,7 +347,53 @@ def student_choose_teacher():
         return jsonify(data)
 
 
+@app.route('/teacher/choose_car/test2', methods=['GET', 'POST'])
+def teacher_choose_car_test2():
+    if request.method == 'GET':
+        if current_user.has_role('Teacher'):
+            teacher = Teacher.query.filter_by(t_u_id=current_user.id).first()
+            cars = Car.query.filter_by(car_subject='科目二').all()
+            teacher_car = Car.query.filter(Car.car_teacher_id == teacher.id, Car.car_subject == '科目二').first()
 
-@app.route('/example', methods=['GET', 'POST'])
-def example():
-    return render_template('example.html')
+            for car in cars:
+                if car.car_teacher_id:
+                    cars.remove(car)
+            if teacher_car:
+                return render_template('choose_test2_car.html', cars=cars, Button=False)
+            else:
+                return render_template('choose_test2_car.html', cars=cars, Button=True)
+
+        else:
+            return redirect(url_for('no_permission'))
+    if request.method == 'POST':
+        data = request.get_json()
+        car_id = data['car_id']
+        teacher = Teacher.query.filter_by(t_u_id=current_user.id).first()
+        teacher_select_car(car_id, teacher.id)
+        return jsonify({'ok': 'yes'})
+
+
+@app.route('/teacher/choose_car/test3', methods=['GET', 'POST'])
+def teacher_choose_car_test3():
+    if request.method == 'GET':
+        if current_user.has_role('Teacher'):
+            teacher = Teacher.query.filter_by(t_u_id=current_user.id).first()
+            cars = Car.query.filter_by(car_subject='科目三').all()
+            teacher_car = Car.query.filter(Car.car_teacher_id == teacher.id, Car.car_subject == '科目三').first()
+
+            for car in cars:
+                if car.car_teacher_id:
+                    cars.remove(car)
+            if teacher_car:
+                return render_template('choose_test3_car.html', cars=cars, Button=False)
+            else:
+                return render_template('choose_test3_car.html', cars=cars, Button=True)
+
+        else:
+            return redirect(url_for('no_permission'))
+    if request.method == 'POST':
+        data = request.get_json()
+        car_id = data['car_id']
+        teacher = Teacher.query.filter_by(t_u_id=current_user.id).first()
+        teacher_select_car(car_id, teacher.id)
+        return jsonify({'ok': 'yes'})

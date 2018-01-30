@@ -185,3 +185,9 @@ def student_select_teacher(teacher_id, user_id):
     db.session.commit()
 
 
+# 教练选择车辆
+def teacher_select_car(car_id, teacher_id):
+    car = Car.query.get(car_id)
+    car.car_teacher_id = teacher_id
+    db.session.add(car)
+    db.session.commit()

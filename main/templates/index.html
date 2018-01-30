@@ -125,11 +125,27 @@
                     <li>
                     <a href="#"><i class="fa fa-gears"></i> <span class="nav-label">选车</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="typography.html">确认车辆</a>
+                        <li><a class="J_menuItem" href="/teacher/choose_car/test2">科二车辆</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="/teacher/choose_car/test3">科三车辆</a>
                         </li>
                     </ul>
 
                     {% endif %}
+
+
+                    <li class="line dk"></li>
+                    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-power-off"></i> <span class="nav-label">登录</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="{{url_for('login')}}">登录</a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li class="line dk"></li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">

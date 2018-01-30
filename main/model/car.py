@@ -9,11 +9,12 @@ class Car(db.Model):
         'mysql_charset': 'utf8mb4'
     }
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    car_number = db.Column(db.Integer)
+    car_number = db.Column(db.String(64))
     car_type = db.Column(db.String(64))
+    car_subject = db.Column(db.String(64))
 
     car_teacher_id = db.Column(db.Integer)
 
 
     def __repr__(self):
-        return '<上课人数:%r >' % (self.class_number)
+        return '<车牌:%r >' % (self.car_number)
