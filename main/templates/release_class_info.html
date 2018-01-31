@@ -26,13 +26,13 @@
 
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>本周课程安排表</h5>
+                <h5>本周课程安排表: <small>请按要求填入"科目二"或者"科目三"</small></h5>
 
             </div>
             <div class="ibox-content">
                 <div class="row row-lg">
                     <div class="col-sm-12">
-                        <h4 class="example-title">{{monday}}--{{sunday}}</h4>
+                        <h4 class="example-title">本周: {{monday}}--{{sunday}}</h4>
                             <table data-toggle="table"  data-height="150" >
                                 <thead>
 
@@ -51,8 +51,8 @@
                                     <tbody>
                                      <tr>
                                          <td>上午</td>
-                                         <td><input class="am_1 form-control" required="required"></td>
-                                         <td><input class="am_2 form-control" required="required"></td>
+                                         <td><input class="am_1 form-control"></td>
+                                         <td><input class="am_2 form-control"></td>
 
                                          <td><input class="am_3 form-control"></td>
                                          <td><input class="am_4 form-control"></td>
@@ -144,7 +144,7 @@
                 success:function(data){
                   if (data.ok === 'yes') {
                     alert('课程设置成功');
-                    <!--window.location.href="http://127.0.0.1:5000/document";-->
+                    window.location.href="http://127.0.0.1:5000/teacher/cat_class_info";
                 }
                 else{
                     alert('课程未填写完');

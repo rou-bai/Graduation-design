@@ -430,7 +430,9 @@ def teacher_release_class_info():
             return render_template('release_class_info.html', monday=Monday, sunday=Sunday)
     if request.method == 'POST':
         data = request.get_json()
-        if data['am_1'] and data['am_2'] and data['am_3'] and data['am_4'] and data['am_5'] and data['am_6'] and data['am_7'] and data['pm_1'] and data['pm_2'] and data['pm_3'] and data['pm_4'] and data['pm_5'] and data['pm_6'] and data['pm_7']:
+        if data['am_1'] and data['am_2'] and data['am_3'] and data['am_4'] and data['am_5'] and data['am_6'] and data[
+            'am_7'] and data['pm_1'] and data['pm_2'] and data['pm_3'] and data['pm_4'] and data['pm_5'] and data[
+            'pm_6'] and data['pm_7']:
             today = date.today()
             Monday = today - timedelta(today.weekday())
             Week_list = []
@@ -441,3 +443,88 @@ def teacher_release_class_info():
             return jsonify({'ok': 'yes'})
         else:
             return jsonify({'ok': 'no'})
+
+
+@app.route('/teacher/cat_class_info', methods=['GET'])
+def teacher_cat_class_info():
+    if request.method == 'GET':
+        today = date.today()
+        Monday = today - timedelta(today.weekday())
+        Sunday = today + timedelta(6 - today.weekday())
+        Week_list = []
+        for i in range(7):
+            Week_list.append(Monday + timedelta(i))
+
+        if current_user.is_anonymous:
+            return redirect(url_for('handle_unlogin_request'))
+        else:
+            teacher = Teacher.query.filter_by(t_u_id=current_user.id).first()
+            class_am_1 = Class.query.filter(Class.class_time == Week_list[0], Class.class_pm == None,
+                                            Class.class_teacher_id == teacher.id).first()
+            class_pm_1 = Class.query.filter(Class.class_time == Week_list[0], Class.class_am == None,
+                                            Class.class_teacher_id == teacher.id).first()
+
+            class_am_2 = Class.query.filter(Class.class_time == Week_list[1], Class.class_pm == None,
+                                            Class.class_teacher_id == teacher.id).first()
+            class_pm_2 = Class.query.filter(Class.class_time == Week_list[1], Class.class_am == None,
+                                            Class.class_teacher_id == teacher.id).first()
+
+            class_am_3 = Class.query.filter(Class.class_time == Week_list[2], Class.class_pm == None,
+                                            Class.class_teacher_id == teacher.id).first()
+            class_pm_3 = Class.query.filter(Class.class_time == Week_list[2], Class.class_am == None,
+                                            Class.class_teacher_id == teacher.id).first()
+
+            class_am_4 = Class.query.filter(Class.class_time == Week_list[3], Class.class_pm == None,
+                                            Class.class_teacher_id == teacher.id).first()
+            class_pm_4 = Class.query.filter(Class.class_time == Week_list[3], Class.class_am == None,
+                                            Class.class_teacher_id == teacher.id).first()
+
+            class_am_5 = Class.query.filter(Class.class_time == Week_list[4], Class.class_pm == None,
+                                            Class.class_teacher_id == teacher.id).first()
+            class_pm_5 = Class.query.filter(Class.class_time == Week_list[4], Class.class_am == None,
+                                            Class.class_teacher_id == teacher.id).first()
+
+            class_am_6 = Class.query.filter(Class.class_time == Week_list[5], Class.class_pm == None,
+                                            Class.class_teacher_id == teacher.id).first()
+            class_pm_6 = Class.query.filter(Class.class_time == Week_list[5], Class.class_am == None,
+                                            Class.class_teacher_id == teacher.id).first()
+
+            class_am_7 = Class.query.filter(Class.class_time == Week_list[6], Class.class_pm == None,
+                                            Class.class_teacher_id == teacher.id).first()
+            class_pm_7 = Class.query.filter(Class.class_time == Week_list[6], Class.class_am == None,
+                                            Class.class_teacher_id == teacher.id).first()
+
+            return render_template('teacher_cat_class_info.html', class_am_1=class_am_1, class_pm_1=class_pm_1,
+                                   class_am_2=class_am_2, class_pm_2=class_pm_2, class_am_3=class_am_3,
+                                   class_pm_3=class_pm_3,
+                                   class_am_4=class_am_4, class_pm_4=class_pm_4, class_am_5=class_am_5,
+                                   class_pm_5=class_pm_5,
+                                   class_am_6=class_am_6, class_pm_6=class_pm_6, class_am_7=class_am_7,
+                                   class_pm_7=class_pm_7,
+                                   monday=Monday, sunday=Sunday)
+
+@app.route('/teacher/cat_car_info', methods=['GET'])
+def teacher_cat_car_info():
+    if request.method == 'GET':
+        if current_user.is_anonymous:
+            return redirect(url_for('handle_unlogin_request'))
+        else:
+            teacher = Teacher.query.filter_by(t_u_id=current_user.id).first()
+            car_two = Car.query.filter(Car.car_teacher_id == teacher.id, Car.car_subject == '科目二').first()
+            car_three = Car.query.filter(Car.car_teacher_id == teacher.id, Car.car_subject == '科目三').first()
+            return render_template('cat_car_info.html', car_two=car_two, car_three=car_three)
+
+
+
+
+
+@app.route('/teacher/cancel_car', methods=['POST'])
+def teacher_cancel_car():
+    if request.method == 'POST':
+        data = request.get_json()
+        car = Car.query.filter_by(id=data['car_id']).first()
+        car.car_teacher_id = None
+        db.session.add(car)
+        db.session.commit()
+        return jsonify({'ok': 'yes'})
+

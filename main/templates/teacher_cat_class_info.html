@@ -28,12 +28,13 @@
             <div class="ibox-title">
                 <h5>本周课程安排表</h5>
 
+
             </div>
             <div class="ibox-content">
                 <div class="row row-lg">
                     <div class="col-sm-12">
-                        <h4 class="example-title">{{monday}}--{{sunday}}</h4>
-                            <table data-toggle="table"  data-height="150" >
+                        <h4 class="example-title">本周: {{monday}}--{{sunday}}    <a href="/teacher/release_class_info" class="btn-primary btn-sm m-b">修改课表</a></h4>
+                            <table data-toggle="table"  data-height="120" >
                                 <thead>
 
 
@@ -51,26 +52,24 @@
                                     <tbody>
                                      <tr>
                                          <td>上午</td>
-                                         <td><input class="am_1 form-control" required="required"></td>
-                                         <td><input class="am_2 form-control" required="required"></td>
-
-                                         <td><input class="am_3 form-control"></td>
-                                         <td><input class="am_4 form-control"></td>
-                                         <td><input class="am_5 form-control"></td>
-
-                                         <td><input class="am_6 form-control"></td>
-                                         <td><input class="am_7 form-control"></td>
+                                         <td>{{class_am_1.class_am}}</td>
+                                         <td>{{class_am_2.class_am}}</td>
+                                         <td>{{class_am_3.class_am}}</td>
+                                         <td>{{class_am_4.class_am}}</td>
+                                         <td>{{class_am_5.class_am}}</td>
+                                         <td>{{class_am_6.class_am}}</td>
+                                         <td>{{class_am_7.class_am}}</td>
 
                                      </tr>
                                      <tr>
                                          <td>下午</td>
-                                         <td><input class="pm_1 form-control"></td>
-                                         <td><input class="pm_2 form-control"></td>
-                                         <td><input class="pm_3 form-control"></td>
-                                         <td><input class="pm_4 form-control"></td>
-                                         <td><input class="pm_5 form-control"></td>
-                                         <td><input class="pm_6 form-control"></td>
-                                         <td><input class="pm_7 form-control"></td>
+                                         <td>{{class_pm_1.class_pm}}</td>
+                                         <td>{{class_pm_1.class_pm}}</td>
+                                         <td>{{class_pm_1.class_pm}}</td>
+                                         <td>{{class_pm_1.class_pm}}</td>
+                                         <td>{{class_pm_1.class_pm}}</td>
+                                         <td>{{class_pm_1.class_pm}}</td>
+                                         <td>{{class_pm_1.class_pm}}</td>
                                      </tr>
                                      </tbody>
                                 </thead>
@@ -78,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <button class="lesson btn-primary block full-width m-b">确定</button>
+
         </div>
         <!-- End Panel Basic -->
 
@@ -101,69 +100,6 @@
     <!-- Peity -->
     <script src="/static/js/demo/bootstrap-table-demo.js"></script>
 
-
-<script>
-    $(function(){
-        $(".lesson").click(function(){
-        var am_1 = $('input.am_1').val();
-        var am_2 = $('input.am_2').val();
-        var am_3 = $('input.am_3').val();
-        var am_4 = $('input.am_4').val();
-        var am_5 = $('input.am_5').val();
-        var am_6 = $('input.am_6').val();
-        var am_7 = $('input.am_7').val();
-        var pm_1 = $('input.pm_1').val();
-        var pm_2 = $('input.pm_2').val();
-        var pm_3 = $('input.pm_3').val();
-        var pm_4 = $('input.pm_4').val();
-        var pm_5 = $('input.pm_5').val();
-        var pm_6 = $('input.pm_6').val();
-        var pm_7 = $('input.pm_7').val();
-        var data = {
-            "am_1": am_1,
-            "am_2": am_2,
-            "am_3": am_3,
-            "am_4": am_4,
-            "am_5": am_5,
-            "am_6": am_6,
-            "am_7": am_7,
-            "pm_1": pm_1,
-            "pm_2": pm_2,
-            "pm_3": pm_3,
-            "pm_4": pm_4,
-            "pm_5": pm_5,
-            "pm_6": pm_6,
-            "pm_7": pm_7};
-
-        $.ajax({
-                url:'http://127.0.0.1:5000/teacher/release_class_info',
-                type:'POST',
-                data:JSON.stringify(data),
-                contentType: 'application/json; charset=UTF-8',
-                dataType: 'json',
-                success:function(data){
-                  if (data.ok === 'yes') {
-                    alert('课程设置成功');
-                    <!--window.location.href="http://127.0.0.1:5000/document";-->
-                }
-                else{
-                    alert('设置错误');
-                }},
-                error:function(){
-                    alert('未知错误');}
-
-
-            })
-
-
-            })
-            })
-
-
-
-
-
-</script>
 
 </body>
 
