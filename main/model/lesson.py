@@ -13,7 +13,8 @@ class Class(db.Model):
     class_number = db.Column(db.Integer)
     class_am = db.Column(db.String(64))
     class_pm = db.Column(db.String(64))
+    class_teacher_id = db.Column(db.Integer)
 
 
     def __repr__(self):
-        return '<上课人数:%r >' % (self.class_number)
+        return '<上课时间:%r >' % (self.class_time)

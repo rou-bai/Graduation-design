@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - Bootstrap Table</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>本周课程安排表</h5>
+
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <h4 class="example-title">{{monday}}--{{sunday}}</h4>
+                            <table data-toggle="table"  data-height="150" >
+                                <thead>
+
+
+                                    <tr>
+                                        <th >时段</th>
+                                        <th >星期一</th>
+                                        <th>星期二</th>
+                                        <th>星期三</th>
+                                        <th>星期四</th>
+                                        <th>星期五</th>
+                                        <th>星期六</th>
+                                        <th>星期天</th>
+
+                                    </tr>
+                                    <tbody>
+                                     <tr>
+                                         <td>上午</td>
+                                         <td><input class="am_1 form-control" required="required"></td>
+                                         <td><input class="am_2 form-control" required="required"></td>
+
+                                         <td><input class="am_3 form-control"></td>
+                                         <td><input class="am_4 form-control"></td>
+                                         <td><input class="am_5 form-control"></td>
+
+                                         <td><input class="am_6 form-control"></td>
+                                         <td><input class="am_7 form-control"></td>
+
+                                     </tr>
+                                     <tr>
+                                         <td>下午</td>
+                                         <td><input class="pm_1 form-control"></td>
+                                         <td><input class="pm_2 form-control"></td>
+                                         <td><input class="pm_3 form-control"></td>
+                                         <td><input class="pm_4 form-control"></td>
+                                         <td><input class="pm_5 form-control"></td>
+                                         <td><input class="pm_6 form-control"></td>
+                                         <td><input class="pm_7 form-control"></td>
+                                     </tr>
+                                     </tbody>
+                                </thead>
+                            </table>
+                    </div>
+                </div>
+            </div>
+            <button class="lesson btn-primary block full-width m-b">确定</button>
+        </div>
+        <!-- End Panel Basic -->
+
+
+    </div>
+
+    <!-- 全局js -->
+    <script src="/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="/static/js/content.js?v=1.0.0"></script>
+
+
+    <!-- Bootstrap table -->
+    <script src="/static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="/static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <!-- Peity -->
+    <script src="/static/js/demo/bootstrap-table-demo.js"></script>
+
+
+<script>
+    $(function(){
+        $(".lesson").click(function(){
+        var am_1 = $('input.am_1').val();
+        var am_2 = $('input.am_2').val();
+        var am_3 = $('input.am_3').val();
+        var am_4 = $('input.am_4').val();
+        var am_5 = $('input.am_5').val();
+        var am_6 = $('input.am_6').val();
+        var am_7 = $('input.am_7').val();
+        var pm_1 = $('input.pm_1').val();
+        var pm_2 = $('input.pm_2').val();
+        var pm_3 = $('input.pm_3').val();
+        var pm_4 = $('input.pm_4').val();
+        var pm_5 = $('input.pm_5').val();
+        var pm_6 = $('input.pm_6').val();
+        var pm_7 = $('input.pm_7').val();
+        var data = {
+            "am_1": am_1,
+            "am_2": am_2,
+            "am_3": am_3,
+            "am_4": am_4,
+            "am_5": am_5,
+            "am_6": am_6,
+            "am_7": am_7,
+            "pm_1": pm_1,
+            "pm_2": pm_2,
+            "pm_3": pm_3,
+            "pm_4": pm_4,
+            "pm_5": pm_5,
+            "pm_6": pm_6,
+            "pm_7": pm_7};
+
+        $.ajax({
+                url:'http://127.0.0.1:5000/teacher/release_class_info',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+                success:function(data){
+                  if (data.ok === 'yes') {
+                    alert('课程设置成功');
+                    <!--window.location.href="http://127.0.0.1:5000/document";-->
+                }
+                else{
+                    alert('课程未填写完');
+                }},
+                error:function(){
+                    alert('未知错误');}
+
+
+            })
+
+
+            })
+            })
+
+
+
+
+
+</script>
+
+</body>
+
+</html>

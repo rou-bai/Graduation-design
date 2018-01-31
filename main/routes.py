@@ -9,8 +9,8 @@ from hashlib import md5
 from flask_security.utils import login_user, logout_user
 from flask_login import login_required
 from flask_security import current_user
-from flask_security import roles_required, roles_accepted
 from .make_data import data_choose_teacher_info
+from datetime import datetime, date, timedelta
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -411,8 +411,33 @@ def student_cat_teacher_info():
                 test3_car = Car.query.filter(Car.car_teacher_id == teacher.id, Car.car_subject == '科目三').first()
                 return render_template('cat_teacher_info.html', real_name=user.real_name, phone=user.phone,
                                        email=user.email, test2_car=test2_car.car_number, test3_car=test3_car.car_number,
-                                       Teacher_info=True)
+                                       Teacher_info=True, username=user.username)
             else:
                 return render_template('cat_teacher_info.html', Teacher_info=False)
         else:
             return redirect(url_for('no_permission'))
+
+
+@app.route('/teacher/release_class_info', methods=['POST', 'GET'])
+def teacher_release_class_info():
+    if request.method == 'GET':
+        if current_user.is_anonymous:
+            return redirect(url_for('handle_unlogin_request'))
+        else:
+            today = date.today()
+            Sunday = today + timedelta(6 - today.weekday())
+            Monday = today - timedelta(today.weekday())
+            return render_template('release_class_info.html', monday=Monday, sunday=Sunday)
+    if request.method == 'POST':
+        data = request.get_json()
+        if data['am_1'] and data['am_2'] and data['am_3'] and data['am_4'] and data['am_5'] and data['am_6'] and data['am_7'] and data['pm_1'] and data['pm_2'] and data['pm_3'] and data['pm_4'] and data['pm_5'] and data['pm_6'] and data['pm_7']:
+            today = date.today()
+            Monday = today - timedelta(today.weekday())
+            Week_list = []
+            for i in range(7):
+                Week_list.append(Monday + timedelta(i))
+            teacher = Teacher.query.filter_by(t_u_id=current_user.id).first()
+            teacher_arrange_classes(data, Week_list, teacher.id)
+            return jsonify({'ok': 'yes'})
+        else:
+            return jsonify({'ok': 'no'})

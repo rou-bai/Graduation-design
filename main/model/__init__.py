@@ -193,3 +193,197 @@ def teacher_select_car(car_id, teacher_id):
     db.session.commit()
 
 
+# 教练排课
+def teacher_arrange_classes(data, week_list, teacher_id):
+    # 周一课程
+    class_1 = Class.query.filter_by(class_time=week_list[0]).all()
+    if class_1:
+        class_am_11 = Class.query.filter(Class.class_time == week_list[0], Class.class_pm == None).first()
+        class_am_11.class_am = data['am_1']
+        db.session.add(class_am_11)
+        db.session.commit()
+        class_pm_11 = Class.query.filter(Class.class_time == week_list[0], Class.class_am == None).first()
+        class_pm_11.class_pm = data['pm_1']
+        db.session.add(class_pm_11)
+        db.session.commit()
+    else:
+        class_am_1 = Class(
+            class_time=week_list[0],
+            class_am=data['am_1'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_am_1)
+        db.session.commit()
+
+        class_pm_1 = Class(
+            class_time=week_list[0],
+            class_pm=data['pm_1'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_pm_1)
+        db.session.commit()
+
+    # 周二课程
+    class_2 = Class.query.filter_by(class_time=week_list[1]).all()
+    if class_2:
+        class_am_22 = Class.query.filter(Class.class_time == week_list[1], Class.class_pm == None).first()
+        class_am_22.class_am = data['am_2']
+        db.session.add(class_am_22)
+        db.session.commit()
+        class_pm_22 = Class.query.filter(Class.class_time == week_list[1], Class.class_am == None).first()
+        class_pm_22.class_pm = data['pm_2']
+        db.session.add(class_pm_22)
+        db.session.commit()
+    else:
+        class_am_2 = Class(
+            class_time=week_list[1],
+            class_am=data['am_2'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_am_2)
+        db.session.commit()
+
+        class_pm_2 = Class(
+            class_time=week_list[1],
+            class_pm=data['pm_2'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_pm_2)
+        db.session.commit()
+    # 周三课程
+    class_3 = Class.query.filter_by(class_time=week_list[2]).all()
+    if class_3:
+        class_am_33 = Class.query.filter(Class.class_time == week_list[2], Class.class_pm == None).first()
+        class_am_33.class_am = data['am_3']
+        db.session.add(class_am_33)
+        db.session.commit()
+        class_pm_33 = Class.query.filter(Class.class_time == week_list[2], Class.class_am == None).first()
+        class_pm_33.class_pm = data['pm_3']
+        db.session.add(class_pm_33)
+        db.session.commit()
+    else:
+        class_am_3 = Class(
+            class_time=week_list[2],
+            class_am=data['am_3'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_am_3)
+        db.session.commit()
+
+        class_pm_3 = Class(
+            class_time=week_list[2],
+            class_pm=data['pm_3'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_pm_3)
+        db.session.commit()
+    # 周四课程
+    class_4 = Class.query.filter_by(class_time=week_list[3]).all()
+    if class_4:
+        class_am_44 = Class.query.filter(Class.class_time == week_list[3], Class.class_pm == None).first()
+        class_am_44.class_am = data['am_4']
+        db.session.add(class_am_44)
+        db.session.commit()
+        class_pm_44 = Class.query.filter(Class.class_time == week_list[3], Class.class_am == None).first()
+        class_pm_44.class_pm = data['pm_4']
+        db.session.add(class_pm_44)
+        db.session.commit()
+    else:
+        class_am_4 = Class(
+            class_time=week_list[3],
+            class_am=data['am_4'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_am_4)
+        db.session.commit()
+
+        class_pm_4 = Class(
+            class_time=week_list[3],
+            class_pm=data['pm_4'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_pm_4)
+        db.session.commit()
+
+    # 周五课程
+    class_5 = Class.query.filter_by(class_time=week_list[4]).all()
+    if class_5:
+        class_am_55 = Class.query.filter(Class.class_time == week_list[4], Class.class_pm == None).first()
+        class_am_55.class_am = data['am_5']
+        db.session.add(class_am_55)
+        db.session.commit()
+        class_pm_55 = Class.query.filter(Class.class_time == week_list[4], Class.class_am == None).first()
+        class_pm_55.class_pm = data['pm_5']
+        db.session.add(class_pm_55)
+        db.session.commit()
+    else:
+        class_am_5 = Class(
+            class_time=week_list[4],
+            class_am=data['am_5'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_am_5)
+        db.session.commit()
+
+        class_pm_5 = Class(
+            class_time=week_list[4],
+            class_pm=data['pm_5'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_pm_5)
+        db.session.commit()
+    # 周六课程
+    class_6 = Class.query.filter_by(class_time=week_list[5]).all()
+    if class_6:
+        class_am_66 = Class.query.filter(Class.class_time == week_list[5], Class.class_pm == None).first()
+        class_am_66.class_am = data['am_6']
+        db.session.add(class_am_66)
+        db.session.commit()
+        class_pm_66 = Class.query.filter(Class.class_time == week_list[5], Class.class_am == None).first()
+        class_pm_66.class_pm = data['pm_6']
+        db.session.add(class_pm_66)
+        db.session.commit()
+    else:
+        class_am_6 = Class(
+            class_time=week_list[5],
+            class_am=data['am_6'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_am_6)
+        db.session.commit()
+
+        class_pm_6 = Class(
+            class_time=week_list[5],
+            class_pm=data['pm_6'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_pm_6)
+        db.session.commit()
+
+    # 周日课程
+    class_7 = Class.query.filter_by(class_time=week_list[6]).all()
+    if class_7:
+        class_am_77 = Class.query.filter(Class.class_time == week_list[6], Class.class_pm == None).first()
+        class_am_77.class_am = data['am_7']
+        db.session.add(class_am_77)
+        db.session.commit()
+        class_pm_77 = Class.query.filter(Class.class_time == week_list[6], Class.class_am == None).first()
+        class_pm_77.class_pm = data['pm_7']
+        db.session.add(class_pm_77)
+        db.session.commit()
+    else:
+        class_am_7 = Class(
+            class_time=week_list[6],
+            class_am=data['am_7'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_am_7)
+        db.session.commit()
+
+        class_pm_7 = Class(
+            class_time=week_list[6],
+            class_pm=data['pm_7'],
+            class_teacher_id=teacher_id
+        )
+        db.session.add(class_pm_7)
+        db.session.commit()
