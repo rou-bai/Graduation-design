@@ -26,17 +26,15 @@
 
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>本周课程安排表</h5>
+                <h5>{{teacher_name}}老师的本周课程安排表</h5>
 
 
             </div>
             <div class="ibox-content">
                 <div class="row row-lg">
                     <div class="col-sm-12">
-                        <h4 class="example-title">本周: {{Week_list[0]}}--{{Week_list[6]}}
-                            <a href="/teacher/release_class_info" class="btn-primary btn-sm m-b">修改课表</a>
-                            </h4>
-                            <table data-toggle="table"  data-height="120" >
+                        <h4 class="example-title">时间: {{Week_list[0]}}--{{Week_list[6]}}    </h4>
+                            <table data-toggle="table"  data-height="200" >
                                 <thead>
 
 
@@ -51,6 +49,7 @@
                                         <th>星期天</th>
 
                                     </tr>
+                                {% if Teacher %}
                                     <tbody>
                                      <tr>
                                          <td>上午</td>
@@ -64,6 +63,16 @@
 
                                      </tr>
                                      <tr>
+                                         <td>7:30-12:00</td>
+                                         <td><a href="" class="am_1 btn-info btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="am_2 btn-info btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="am_3 btn-info btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="am_4 btn-info btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="am_5 btn-info btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="am_6 btn-info btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="am_7 btn-info btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                     </tr>
+                                     <tr>
                                          <td>下午</td>
                                          <td>{{class_pm_1.class_pm}}</td>
                                          <td>{{class_pm_1.class_pm}}</td>
@@ -73,7 +82,22 @@
                                          <td>{{class_pm_1.class_pm}}</td>
                                          <td>{{class_pm_1.class_pm}}</td>
                                      </tr>
+                                     <tr>
+                                         <td>14:00-18:00</td>
+                                         <td><a href="" class="pm_1 btn-primary btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="pm_2 btn-primary btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="pm_3 btn-primary btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="pm_4 btn-primary btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="pm_5 btn-primary btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="pm_6 btn-primary btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                         <td><a href="" class="pm_7 btn-primary btn-sm m-b" data-subject={{student_subject}}>选择</a></td>
+                                     </tr>
                                      </tbody>
+                                {% endif %}
+                                {% if not Teacher %}
+                                <h2  style="width:100%;text-align:center">您还未选择教练哦</h2>
+
+                                {% endif %}
                                 </thead>
                             </table>
                     </div>
@@ -101,8 +125,6 @@
 
     <!-- Peity -->
     <script src="/static/js/demo/bootstrap-table-demo.js"></script>
-
-
 
 
 </body>

@@ -1,4 +1,5 @@
 from .model.user import User
+from datetime import datetime, date, timedelta
 
 
 # 选择教练信息展示data封装
@@ -20,4 +21,10 @@ def data_choose_teacher_info(data, teacher_list):
     return data
 
 
-
+# 封装当前一周列表
+def make_week_list(Week_list):
+    today = date.today()
+    Monday = today - timedelta(today.weekday())
+    for i in range(7):
+        Week_list.append(Monday + timedelta(i))
+    return Week_list
