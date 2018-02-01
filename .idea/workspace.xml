@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2fa90e3-7f7a-45e5-815d-724154df5e43" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/main/templates/student_cat_class_list.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app.log" afterPath="$PROJECT_DIR$/app.log" />
-      <change beforePath="$PROJECT_DIR$/app.log.1" afterPath="$PROJECT_DIR$/app.log.1" />
-      <change beforePath="$PROJECT_DIR$/main/example.py" afterPath="$PROJECT_DIR$/main/example.py" />
-      <change beforePath="$PROJECT_DIR$/main/model/__init__.py" afterPath="$PROJECT_DIR$/main/model/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/main/model/lesson.py" afterPath="$PROJECT_DIR$/main/model/lesson.py" />
-      <change beforePath="$PROJECT_DIR$/main/model/student.py" afterPath="$PROJECT_DIR$/main/model/student.py" />
-      <change beforePath="$PROJECT_DIR$/main/routes.py" afterPath="$PROJECT_DIR$/main/routes.py" />
-      <change beforePath="$PROJECT_DIR$/main/templates/choose_teacher.html" afterPath="$PROJECT_DIR$/main/templates/choose_teacher.html" />
-      <change beforePath="$PROJECT_DIR$/main/templates/student_choose_class.html" afterPath="$PROJECT_DIR$/main/templates/student_choose_class.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.gitattributes" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes " afterPath="" />
     </list>
     <ignored path="WSPrinterServer.iws" />
     <ignored path=".idea/workspace.xml" />
