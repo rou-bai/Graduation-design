@@ -1,104 +1,4 @@
-2018-01-31 20:41:38,214 ERROR: Exception on /teacher/cat_car_info [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-TypeError: teacher_cat_car_info() missing 1 required positional argument: 'car_id'
-2018-01-31 20:53:42,693 ERROR: Exception on /teacher/cat_car_info [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-TypeError: teacher_cat_car_info() missing 1 required positional argument: 'car_id'
-2018-01-31 20:56:34,020 ERROR: Exception on /teacher/cancel_car [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 528, in teacher_cancel_car
-    db.commit()
-AttributeError: 'SQLAlchemy' object has no attribute 'commit'
-2018-01-31 20:56:46,848 ERROR: Exception on /teacher/cancel_car [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 528, in teacher_cancel_car
-    db.commit()
-AttributeError: 'SQLAlchemy' object has no attribute 'commit'
-2018-02-01 10:10:18,161 ERROR: Exception on /student/cat/teacher_info [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 413, in student_cat_teacher_info
-    email=user.email, test2_car=test2_car.car_number, test3_car=test3_car.car_number,
-AttributeError: 'NoneType' object has no attribute 'car_number'
-2018-02-01 10:37:40,952 ERROR: Exception on /teacher/release_class_info [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 451, in teacher_release_class_info
-    teacher_arrange_classes(data, Week_list, teacher.id)
-  File "/home/signit/桌面/Graduation design/main/model/__init__.py", line 202, in teacher_arrange_classes
-    class_am_11.class_am = data['am_1']
-AttributeError: 'NoneType' object has no attribute 'class_am'
-2018-02-01 11:30:46,757 ERROR: Exception on /student/choose_class [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+2018-02-01 17:23:27,407 ERROR: Exception on /student/choose_class [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -113,19 +13,54 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/signit/桌面/Graduation design/main/routes.py", line 593, in student_choose_class
-    return render_template('student_choose_class.html', Teacher=False)
-  File "/usr/local/lib/python3.5/dist-packages/flask/templating.py", line 134, in render_template
-    context, ctx.app)
-  File "/usr/local/lib/python3.5/dist-packages/flask/templating.py", line 116, in _render
-    rv = template.render(context)
-  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 989, in render
-    return self.environment.handle_exception(exc_info, True)
+    return render_template('student_choose_class.html', Teacher=False, Week_list=Week_list)
+  File "/usr/local/lib/python3.5/dist-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 786, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/usr/lib/python3/dist-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 565, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
   File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 754, in handle_exception
     reraise(exc_type, exc_value, tb)
   File "/usr/lib/python3/dist-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/signit/桌面/Graduation design/main/templates/student_choose_class.html", line 36, in top-level template code
-    <h4 class="example-title">时间: {{Week_list[0]}}--{{Week_list[6]}}    </h4>
-  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 389, in getitem
-    return obj[argument]
-jinja2.exceptions.UndefinedError: 'Week_list' is undefined
+  File "/home/signit/桌面/Graduation design/main/templates/student_choose_class.html", line 98, in template
+    {% endif %}
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 470, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 897, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 879, in subparse
+    rv = self.parse_statement()
+  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 135, in parse_statement
+    self.fail_unknown_tag(token.value, token.lineno)
+  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 88, in fail_unknown_tag
+    return self._fail_ut_eof(name, self._end_token_stack, lineno)
+  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 81, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "/usr/lib/python3/dist-packages/jinja2/parser.py", line 50, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2018-02-01 20:10:44,125 ERROR: Exception on /student/choose_class/confirm [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 682, in student_choose_class_confirm
+    student_choose_class(student, choose_class)
+TypeError: student_choose_class() takes 0 positional arguments but 2 were given

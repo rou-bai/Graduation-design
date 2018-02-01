@@ -16,6 +16,7 @@ from .student import Student
 from .test import Test
 from .lesson import Class
 from .car import Car
+from datetime import datetime
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -156,6 +157,12 @@ def check_identity_number(identity_number):
                 return
         else:
             return
+# 学员所在科目填写检查
+def check_subject(student_subject):
+    if student_subject == '科目二' or student_subject == '科目三':
+        return student_subject
+    else:
+        return
 
 
 # 性别检查
@@ -210,7 +217,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_am_1 = Class(
             class_time=week_list[0],
             class_am=data['am_1'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_am_1)
         db.session.commit()
@@ -218,7 +226,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_pm_1 = Class(
             class_time=week_list[0],
             class_pm=data['pm_1'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_pm_1)
         db.session.commit()
@@ -238,7 +247,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_am_2 = Class(
             class_time=week_list[1],
             class_am=data['am_2'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_am_2)
         db.session.commit()
@@ -246,7 +256,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_pm_2 = Class(
             class_time=week_list[1],
             class_pm=data['pm_2'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_pm_2)
         db.session.commit()
@@ -265,7 +276,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_am_3 = Class(
             class_time=week_list[2],
             class_am=data['am_3'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_am_3)
         db.session.commit()
@@ -273,7 +285,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_pm_3 = Class(
             class_time=week_list[2],
             class_pm=data['pm_3'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_pm_3)
         db.session.commit()
@@ -292,7 +305,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_am_4 = Class(
             class_time=week_list[3],
             class_am=data['am_4'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_am_4)
         db.session.commit()
@@ -300,7 +314,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_pm_4 = Class(
             class_time=week_list[3],
             class_pm=data['pm_4'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_pm_4)
         db.session.commit()
@@ -320,7 +335,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_am_5 = Class(
             class_time=week_list[4],
             class_am=data['am_5'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_am_5)
         db.session.commit()
@@ -328,7 +344,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_pm_5 = Class(
             class_time=week_list[4],
             class_pm=data['pm_5'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_pm_5)
         db.session.commit()
@@ -347,7 +364,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_am_6 = Class(
             class_time=week_list[5],
             class_am=data['am_6'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_am_6)
         db.session.commit()
@@ -355,7 +373,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_pm_6 = Class(
             class_time=week_list[5],
             class_pm=data['pm_6'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_pm_6)
         db.session.commit()
@@ -375,7 +394,8 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_am_7 = Class(
             class_time=week_list[6],
             class_am=data['am_7'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_am_7)
         db.session.commit()
@@ -383,7 +403,52 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         class_pm_7 = Class(
             class_time=week_list[6],
             class_pm=data['pm_7'],
-            class_teacher_id=teacher_id
+            class_teacher_id=teacher_id,
+            class_limit_people=8
         )
         db.session.add(class_pm_7)
         db.session.commit()
+
+# 学生选课
+def student_select_class(student, choose_class):
+    number = choose_class.class_time.weekday() + 1
+    if choose_class.class_am:
+        if number == 1:
+            student.s_am_1_id = choose_class.id
+        elif number == 2:
+            student.s_am_2_id = choose_class.id
+        elif number == 3:
+            student.s_am_3_id = choose_class.id
+        elif number == 4:
+            student.s_am_4_id = choose_class.id
+        elif number == 5:
+            student.s_am_5_id = choose_class.id
+        elif number == 6:
+            student.s_am_6_id = choose_class.id
+        elif number == 7:
+            student.s_am_7_id = choose_class.id
+    else:
+        if number == 1:
+            student.s_pm_1_id = choose_class.id
+        elif number == 2:
+            student.s_pm_2_id = choose_class.id
+        elif number == 3:
+            student.s_pm_3_id = choose_class.id
+        elif number == 4:
+            student.s_pm_4_id = choose_class.id
+        elif number == 5:
+            student.s_pm_5_id = choose_class.id
+        elif number == 6:
+            student.s_pm_6_id = choose_class.id
+        elif number == 7:
+            student.s_pm_7_id = choose_class.id
+    db.session.add(student)
+    db.session.commit()
+    choose_class.class_limit_people -= 1
+    db.session.add(choose_class)
+    db.session.commit()
+
+
+
+
+

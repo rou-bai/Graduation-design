@@ -16,7 +16,20 @@ class Student(db.Model):
 
     s_teacher_id = db.Column(db.Integer)
     s_test_id = db.Column(db.Integer)
-    s_class_id = db.Column(db.Integer)
+    s_am_1_id = db.Column(db.Integer)
+    s_am_2_id = db.Column(db.Integer)
+    s_am_3_id = db.Column(db.Integer)
+    s_am_4_id = db.Column(db.Integer)
+    s_am_5_id = db.Column(db.Integer)
+    s_am_6_id = db.Column(db.Integer)
+    s_am_7_id = db.Column(db.Integer)
+    s_pm_1_id = db.Column(db.Integer)
+    s_pm_2_id = db.Column(db.Integer)
+    s_pm_3_id = db.Column(db.Integer)
+    s_pm_4_id = db.Column(db.Integer)
+    s_pm_5_id = db.Column(db.Integer)
+    s_pm_6_id = db.Column(db.Integer)
+    s_pm_7_id = db.Column(db.Integer)
 
     def __repr__(self):
-        return '<id:%r  真实名称:%r>' % (self.id, self.s_real_name)
+        return '<id:%r  科目进度:%r>' % (self.id, self.s_subject)

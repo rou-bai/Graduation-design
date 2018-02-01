@@ -151,11 +151,16 @@ def update_person_data1():
                     if check_email(email):
                         if check_phone(phone):
                             if check_identity_number(identity_number):
-                                update_person_info(current_user, user, username, gender, real_name, email, phone,
-                                                   identity_number)
-                                update_student_info(current_user, student, subject)
-                                flash('个人资料修改成功')
-                                return redirect(url_for('update_person_data'))
+                                if check_subject(subject):
+                                    update_person_info(current_user, user, username, gender, real_name, email, phone,
+                                                       identity_number)
+                                    update_student_info(current_user, student, subject)
+                                    flash('个人资料修改成功')
+                                    return redirect(url_for('update_person_data'))
+                                else:
+                                    flash('所在科目未按要求填写')
+                                    return render_template('update_person_data1.html', form=form, Student=True,
+                                                           Teacher=False)
                             else:
                                 flash('身份证格式或长度错误')
                                 return render_template('update_person_data1.html', form=form, Student=True,
@@ -530,7 +535,7 @@ def teacher_cancel_car():
         return jsonify({'ok': 'yes'})
 
 
-@app.route('/student/choose_class', methods=['GET', 'POST'])
+@app.route('/student/choose_class', methods=['GET'])
 def student_choose_class():
     Week_list = []
     make_week_list(Week_list)
@@ -543,38 +548,108 @@ def student_choose_class():
             if teacher:
                 class_am_1 = Class.query.filter(Class.class_time == Week_list[0], Class.class_pm == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_am_1:
+                    s_am_1 = Student.query.filter(Student.s_am_1_id == class_am_1.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_am_1 = False
                 class_pm_1 = Class.query.filter(Class.class_time == Week_list[0], Class.class_am == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_pm_1:
+                    s_pm_1 = Student.query.filter(Student.s_pm_1_id == class_pm_1.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_pm_1 = False
 
                 class_am_2 = Class.query.filter(Class.class_time == Week_list[1], Class.class_pm == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_am_2:
+                    s_am_2 = Student.query.filter(Student.s_am_2_id == class_am_2.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_am_2 = False
                 class_pm_2 = Class.query.filter(Class.class_time == Week_list[1], Class.class_am == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_pm_2:
+                    s_pm_2 = Student.query.filter(Student.s_pm_2_id == class_pm_2.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_pm_2 = False
 
                 class_am_3 = Class.query.filter(Class.class_time == Week_list[2], Class.class_pm == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_am_3:
+                    s_am_3 = Student.query.filter(Student.s_am_3_id == class_am_3.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_am_3 = False
                 class_pm_3 = Class.query.filter(Class.class_time == Week_list[2], Class.class_am == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_pm_3:
+                    s_pm_3 = Student.query.filter(Student.s_pm_3_id == class_pm_3.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_pm_3 = False
 
                 class_am_4 = Class.query.filter(Class.class_time == Week_list[3], Class.class_pm == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_am_4:
+                    s_am_4 = Student.query.filter(Student.s_am_4_id == class_am_4.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_am_4 = False
                 class_pm_4 = Class.query.filter(Class.class_time == Week_list[3], Class.class_am == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_pm_4:
+                    s_pm_4 = Student.query.filter(Student.s_pm_4_id == class_pm_4.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_pm_4 = False
 
                 class_am_5 = Class.query.filter(Class.class_time == Week_list[4], Class.class_pm == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_am_5:
+                    s_am_5 = Student.query.filter(Student.s_am_5_id == class_am_5.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_am_5 = False
                 class_pm_5 = Class.query.filter(Class.class_time == Week_list[4], Class.class_am == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_pm_5:
+                    s_pm_5 = Student.query.filter(Student.s_pm_5_id == class_pm_5.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_pm_5 = False
 
                 class_am_6 = Class.query.filter(Class.class_time == Week_list[5], Class.class_pm == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_am_6:
+                    s_am_6 = Student.query.filter(Student.s_am_6_id == class_am_6.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_am_6 = False
                 class_pm_6 = Class.query.filter(Class.class_time == Week_list[5], Class.class_am == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_pm_6:
+                    s_pm_6 = Student.query.filter(Student.s_pm_6_id == class_pm_6.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_pm_6 = False
 
                 class_am_7 = Class.query.filter(Class.class_time == Week_list[6], Class.class_pm == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_am_7:
+                    s_am_7 = Student.query.filter(Student.s_am_7_id == class_am_7.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_am_6 = False
                 class_pm_7 = Class.query.filter(Class.class_time == Week_list[6], Class.class_am == None,
                                                 Class.class_teacher_id == teacher.id).first()
+                if class_pm_7:
+                    s_pm_7 = Student.query.filter(Student.s_pm_7_id == class_pm_7.id,
+                                                  Student.s_u_id == current_user.id).first()
+                else:
+                    s_pm_7 = False
 
                 t_user = User.query.filter_by(id=teacher.t_u_id).first()
 
@@ -586,7 +661,32 @@ def student_choose_class():
                                        class_am_6=class_am_6, class_pm_6=class_pm_6, class_am_7=class_am_7,
                                        class_pm_7=class_pm_7,
                                        teacher_name=t_user.real_name, Week_list=Week_list, Teacher=True,
-                                       student_subject=student.s_subject)
+                                       s_am_1=s_am_1, s_pm_1=s_pm_1, s_am_2=s_am_2,
+                                       s_pm_2=s_pm_2, s_am_3=s_am_3, s_pm_3=s_pm_3, s_am_4=s_am_4, s_pm_4=s_pm_4,
+                                       s_am_5=s_am_5, s_pm_5=s_pm_5, s_am_6=s_am_6, s_pm_6=s_pm_6, s_am_7=s_am_7,
+                                       s_pm_7=s_pm_7)
             else:
                 flash('您还未选择教练')
                 return render_template('student_choose_class.html', Teacher=False, Week_list=Week_list)
+
+@app.route('/student/choose_class/confirm', methods=['POST'])
+def student_choose_class_confirm():
+    if request.method == 'POST':
+        data = request.get_json()
+        class_id = data['class_id']
+        choose_class = Class.query.filter_by(id=class_id).first()
+        subject_1 = choose_class.class_am
+        subject_2 = choose_class.class_pm
+        student = Student.query.filter_by(s_u_id=current_user.id).first()
+        if choose_class.class_limit_people <= 0:
+            return jsonify({'ok': 'less'})
+        else:
+            if student.s_subject == subject_1 or student.s_subject == subject_2:
+                student_select_class(student, choose_class)
+                return jsonify({'ok': 'yes'})
+            else:
+                return jsonify({'ok': 'no'})
+
+
+
+

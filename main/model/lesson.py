@@ -10,7 +10,7 @@ class Class(db.Model):
     }
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     class_time = db.Column(db.DateTime)
-    class_number = db.Column(db.Integer)
+    class_limit_people = db.Column(db.Integer)
     class_am = db.Column(db.String(64))
     class_pm = db.Column(db.String(64))
     class_teacher_id = db.Column(db.Integer)
