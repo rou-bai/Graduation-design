@@ -64,3 +64,34 @@ Traceback (most recent call last):
   File "/home/signit/桌面/Graduation design/main/routes.py", line 682, in student_choose_class_confirm
     student_choose_class(student, choose_class)
 TypeError: student_choose_class() takes 0 positional arguments but 2 were given
+2018-02-02 10:16:42,179 ERROR: Exception on /student_cat_class_list [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 716, in student_cat_class_list
+    return render_template('student_cat_class_list.html', Weeklist=Weeklist, class_am_1=class_am_1, class_am_2=class_am_2, class_am_3=class_am_3, class_am_4=class_am_4, class_am_5=class_am_5, class_am_6=class_am_6, class_am_7=class_am_7, class_pm_1=class_pm_1, class_pm_2=class_pm_2, class_pm_3=class_pm_3, class_pm_4=class_pm_4, class_pm_5=class_pm_5, class_pm_6=class_pm_6, class_pm_7=class_pm_7)
+  File "/usr/local/lib/python3.5/dist-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/usr/local/lib/python3.5/dist-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/signit/桌面/Graduation design/main/templates/student_cat_class_list.html", line 36, in top-level template code
+    <h4 class="example-title">本周: {{Week_list[0]}}--{{Week_list[6]}}
+  File "/usr/lib/python3/dist-packages/jinja2/environment.py", line 389, in getitem
+    return obj[argument]
+jinja2.exceptions.UndefinedError: 'Week_list' is undefined

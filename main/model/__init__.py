@@ -157,6 +157,8 @@ def check_identity_number(identity_number):
                 return
         else:
             return
+
+
 # 学员所在科目填写检查
 def check_subject(student_subject):
     if student_subject == '科目二' or student_subject == '科目三':
@@ -205,11 +207,13 @@ def teacher_arrange_classes(data, week_list, teacher_id):
     # 周一课程
     class_1 = Class.query.filter(Class.class_time == week_list[0], Class.class_teacher_id == teacher_id).all()
     if class_1:
-        class_am_11 = Class.query.filter(Class.class_time == week_list[0], Class.class_pm == None, Class.class_teacher_id == teacher_id).first()
+        class_am_11 = Class.query.filter(Class.class_time == week_list[0], Class.class_pm == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_am_11.class_am = data['am_1']
         db.session.add(class_am_11)
         db.session.commit()
-        class_pm_11 = Class.query.filter(Class.class_time == week_list[0], Class.class_am == None, Class.class_teacher_id == teacher_id).first()
+        class_pm_11 = Class.query.filter(Class.class_time == week_list[0], Class.class_am == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_pm_11.class_pm = data['pm_1']
         db.session.add(class_pm_11)
         db.session.commit()
@@ -235,11 +239,13 @@ def teacher_arrange_classes(data, week_list, teacher_id):
     # 周二课程
     class_2 = Class.query.filter(Class.class_time == week_list[1], Class.class_teacher_id == teacher_id).all()
     if class_2:
-        class_am_22 = Class.query.filter(Class.class_time == week_list[1], Class.class_pm == None, Class.class_teacher_id == teacher_id).first()
+        class_am_22 = Class.query.filter(Class.class_time == week_list[1], Class.class_pm == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_am_22.class_am = data['am_2']
         db.session.add(class_am_22)
         db.session.commit()
-        class_pm_22 = Class.query.filter(Class.class_time == week_list[1], Class.class_am == None, Class.class_teacher_id == teacher_id).first()
+        class_pm_22 = Class.query.filter(Class.class_time == week_list[1], Class.class_am == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_pm_22.class_pm = data['pm_2']
         db.session.add(class_pm_22)
         db.session.commit()
@@ -264,11 +270,13 @@ def teacher_arrange_classes(data, week_list, teacher_id):
     # 周三课程
     class_3 = Class.query.filter(Class.class_time == week_list[2], Class.class_teacher_id == teacher_id).all()
     if class_3:
-        class_am_33 = Class.query.filter(Class.class_time == week_list[2], Class.class_pm == None, Class.class_teacher_id == teacher_id).first()
+        class_am_33 = Class.query.filter(Class.class_time == week_list[2], Class.class_pm == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_am_33.class_am = data['am_3']
         db.session.add(class_am_33)
         db.session.commit()
-        class_pm_33 = Class.query.filter(Class.class_time == week_list[2], Class.class_am == None, Class.class_teacher_id == teacher_id).first()
+        class_pm_33 = Class.query.filter(Class.class_time == week_list[2], Class.class_am == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_pm_33.class_pm = data['pm_3']
         db.session.add(class_pm_33)
         db.session.commit()
@@ -293,11 +301,13 @@ def teacher_arrange_classes(data, week_list, teacher_id):
     # 周四课程
     class_4 = Class.query.filter(Class.class_time == week_list[3], Class.class_teacher_id == teacher_id).all()
     if class_4:
-        class_am_44 = Class.query.filter(Class.class_time == week_list[3], Class.class_pm == None, Class.class_teacher_id == teacher_id).first()
+        class_am_44 = Class.query.filter(Class.class_time == week_list[3], Class.class_pm == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_am_44.class_am = data['am_4']
         db.session.add(class_am_44)
         db.session.commit()
-        class_pm_44 = Class.query.filter(Class.class_time == week_list[3], Class.class_am == None, Class.class_teacher_id == teacher_id).first()
+        class_pm_44 = Class.query.filter(Class.class_time == week_list[3], Class.class_am == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_pm_44.class_pm = data['pm_4']
         db.session.add(class_pm_44)
         db.session.commit()
@@ -323,11 +333,13 @@ def teacher_arrange_classes(data, week_list, teacher_id):
     # 周五课程
     class_5 = Class.query.filter(Class.class_time == week_list[4], Class.class_teacher_id == teacher_id).all()
     if class_5:
-        class_am_55 = Class.query.filter(Class.class_time == week_list[4], Class.class_pm == None, Class.class_teacher_id == teacher_id).first()
+        class_am_55 = Class.query.filter(Class.class_time == week_list[4], Class.class_pm == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_am_55.class_am = data['am_5']
         db.session.add(class_am_55)
         db.session.commit()
-        class_pm_55 = Class.query.filter(Class.class_time == week_list[4], Class.class_am == None, Class.class_teacher_id == teacher_id).first()
+        class_pm_55 = Class.query.filter(Class.class_time == week_list[4], Class.class_am == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_pm_55.class_pm = data['pm_5']
         db.session.add(class_pm_55)
         db.session.commit()
@@ -352,11 +364,13 @@ def teacher_arrange_classes(data, week_list, teacher_id):
     # 周六课程
     class_6 = Class.query.filter(Class.class_time == week_list[5], Class.class_teacher_id == teacher_id).all()
     if class_6:
-        class_am_66 = Class.query.filter(Class.class_time == week_list[5], Class.class_pm == None, Class.class_teacher_id == teacher_id).first()
+        class_am_66 = Class.query.filter(Class.class_time == week_list[5], Class.class_pm == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_am_66.class_am = data['am_6']
         db.session.add(class_am_66)
         db.session.commit()
-        class_pm_66 = Class.query.filter(Class.class_time == week_list[5], Class.class_am == None, Class.class_teacher_id == teacher_id).first()
+        class_pm_66 = Class.query.filter(Class.class_time == week_list[5], Class.class_am == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_pm_66.class_pm = data['pm_6']
         db.session.add(class_pm_66)
         db.session.commit()
@@ -382,11 +396,13 @@ def teacher_arrange_classes(data, week_list, teacher_id):
     # 周日课程
     class_7 = Class.query.filter(Class.class_time == week_list[6], Class.class_teacher_id == teacher_id).all()
     if class_7:
-        class_am_77 = Class.query.filter(Class.class_time == week_list[6], Class.class_pm == None, Class.class_teacher_id == teacher_id).first()
+        class_am_77 = Class.query.filter(Class.class_time == week_list[6], Class.class_pm == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_am_77.class_am = data['am_7']
         db.session.add(class_am_77)
         db.session.commit()
-        class_pm_77 = Class.query.filter(Class.class_time == week_list[6], Class.class_am == None, Class.class_teacher_id == teacher_id).first()
+        class_pm_77 = Class.query.filter(Class.class_time == week_list[6], Class.class_am == None,
+                                         Class.class_teacher_id == teacher_id).first()
         class_pm_77.class_pm = data['pm_7']
         db.session.add(class_pm_77)
         db.session.commit()
@@ -408,6 +424,7 @@ def teacher_arrange_classes(data, week_list, teacher_id):
         )
         db.session.add(class_pm_7)
         db.session.commit()
+
 
 # 学生选课
 def student_select_class(student, choose_class):
@@ -449,6 +466,41 @@ def student_select_class(student, choose_class):
     db.session.commit()
 
 
-
-
-
+# 学生取消选课
+def student_cancel_selected_class(student, choose_class):
+    number = choose_class.class_time.weekday() + 1
+    if choose_class.class_am:
+        if number == 1:
+            student.s_am_1_id = None
+        elif number == 2:
+            student.s_am_2_id = None
+        elif number == 3:
+            student.s_am_3_id = None
+        elif number == 4:
+            student.s_am_4_id = None
+        elif number == 5:
+            student.s_am_5_id = None
+        elif number == 6:
+            student.s_am_6_id = None
+        elif number == 7:
+            student.s_am_7_id = None
+    else:
+        if number == 1:
+            student.s_pm_1_id = None
+        elif number == 2:
+            student.s_pm_2_id = None
+        elif number == 3:
+            student.s_pm_3_id = None
+        elif number == 4:
+            student.s_pm_4_id = None
+        elif number == 5:
+            student.s_pm_5_id = None
+        elif number == 6:
+            student.s_pm_6_id = None
+        elif number == 7:
+            student.s_pm_7_id = None
+    db.session.add(student)
+    db.session.commit()
+    choose_class.class_limit_people += 1
+    db.session.add(choose_class)
+    db.session.commit()

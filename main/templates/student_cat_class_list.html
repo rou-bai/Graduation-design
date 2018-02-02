@@ -34,9 +34,8 @@
                 <div class="row row-lg">
                     <div class="col-sm-12">
                         <h4 class="example-title">本周: {{Week_list[0]}}--{{Week_list[6]}}
-                            <a href="/teacher/release_class_info" class="btn-primary btn-sm m-b">修改课表</a>
                             </h4>
-                            <table data-toggle="table"  data-height="120" >
+                            <table data-toggle="table"  data-height="200" >
                                 <thead>
 
 
@@ -64,14 +63,91 @@
 
                                      </tr>
                                      <tr>
+                                         <td></td>
+                                         <td>
+                                             {% if class_am_1 %}
+                                             <a href="" class="am_1 btn-info btn-sm m-b" data-id={{class_am_1.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_am_2 %}
+                                             <a href="" class="am_2 btn-info btn-sm m-b" data-id={{class_am_2.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_am_3 %}
+                                             <a href="" class="am_3 btn-info btn-sm m-b" data-id={{class_am_3.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_am_4 %}
+                                             <a href="" class="am_4 btn-info btn-sm m-b" data-id={{class_am_4.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_am_5 %}
+                                             <a href="" class="am_5 btn-info btn-sm m-b" data-id={{class_am_5.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_am_6 %}
+                                             <a href="" class="am_6 btn-info btn-sm m-b" data-id={{class_am_6.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_am_7 %}
+                                             <a href="" class="am_7 btn-info btn-sm m-b" data-id={{class_am_7.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                     </tr>
+                                     <tr>
                                          <td>下午</td>
                                          <td>{{class_pm_1.class_pm}}</td>
-                                         <td>{{class_pm_1.class_pm}}</td>
-                                         <td>{{class_pm_1.class_pm}}</td>
-                                         <td>{{class_pm_1.class_pm}}</td>
-                                         <td>{{class_pm_1.class_pm}}</td>
-                                         <td>{{class_pm_1.class_pm}}</td>
-                                         <td>{{class_pm_1.class_pm}}</td>
+                                         <td>{{class_pm_2.class_pm}}</td>
+                                         <td>{{class_pm_3.class_pm}}</td>
+                                         <td>{{class_pm_4.class_pm}}</td>
+                                         <td>{{class_pm_5.class_pm}}</td>
+                                         <td>{{class_pm_6.class_pm}}</td>
+                                         <td>{{class_pm_7.class_pm}}</td>
+                                     </tr>
+
+                                     <tr>
+                                         <td></td>
+                                         <td>
+                                             {% if class_pm_1 %}
+                                             <a href="" class="pm_1 btn-primary btn-sm m-b" data-id={{class_pm_1.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_pm_2 %}
+                                             <a href="" class="pm_2 btn-primary btn-sm m-b" data-id={{class_pm_2.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_pm_3 %}
+                                             <a href="" class="pm_3 btn-primary btn-sm m-b" data-id={{class_pm_3.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_pm_4 %}
+                                             <a href="" class="pm_4 btn-primary btn-sm m-b" data-id={{class_pm_4.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_pm_5 %}
+                                             <a href="" class="pm_5 btn-primary btn-sm m-b" data-id={{class_pm_5.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_pm_6 %}
+                                             <a href="" class="pm_6 btn-primary btn-sm m-b" data-id={{class_pm_6.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
+                                         <td>
+                                             {% if class_pm_7 %}
+                                             <a href="" class="pm_7 btn-primary btn-sm m-b" data-id={{class_pm_7.id}}>取消</a>
+                                             {% endif %}
+                                         </td>
                                      </tr>
                                      </tbody>
                                 </thead>
@@ -101,6 +177,583 @@
 
     <!-- Peity -->
     <script src="/static/js/demo/bootstrap-table-demo.js"></script>
+
+
+<!--取消周一下午的课-->
+<script>
+    $(function(){
+        $(".pm_1").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+
+<!--取消周二下午的课-->
+<script>
+    $(function(){
+        $(".pm_2").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周三下午的课-->
+<script>
+    $(function(){
+        $(".pm_3").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周四下午的课-->
+<script>
+    $(function(){
+        $(".pm_4").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周五下午的课-->
+<script>
+    $(function(){
+        $(".pm_5").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周六下午的课-->
+<script>
+    $(function(){
+        $(".pm_6").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周日下午的课-->
+<script>
+    $(function(){
+        $(".pm_7").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周一上午的课-->
+<script>
+    $(function(){
+        $(".am_1").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周二上午的课-->
+<script>
+    $(function(){
+        $(".am_2").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周三上午的课-->
+<script>
+    $(function(){
+        $(".am_3").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周四上午的课-->
+<script>
+    $(function(){
+        $(".am_4").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周五上午的课-->
+<script>
+    $(function(){
+        $(".am_5").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周六上午的课-->
+<script>
+    $(function(){
+        $(".am_6").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
+<!--取消周日上午的课-->
+<script>
+    $(function(){
+        $(".am_7").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            class_id = this.getAttribute("data-id");
+            var data = {"class_id": class_id};
+            $.ajax({
+                url: 'http://127.0.0.1:5000/student/cancel_class',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定取消该课程吗?');
+                     window.location.href="http://127.0.0.1:5000/student/cat_class_list";
+
+                     }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+
+
+            })
+            })
+
+</script>
 
 
 

@@ -669,6 +669,7 @@ def student_choose_class():
                 flash('您还未选择教练')
                 return render_template('student_choose_class.html', Teacher=False, Week_list=Week_list)
 
+
 @app.route('/student/choose_class/confirm', methods=['POST'])
 def student_choose_class_confirm():
     if request.method == 'POST':
@@ -688,5 +689,45 @@ def student_choose_class_confirm():
                 return jsonify({'ok': 'no'})
 
 
+@app.route('/student/cat_class_list', methods=['GET'])
+def student_cat_class_list():
+    if request.method == 'GET':
+        if current_user.is_anonymous:
+            return redirect(url_for('handle_unlogin_request'))
+        else:
+            student = Student.query.filter_by(s_u_id=current_user.id).first()
+            class_am_1 = Class.query.filter_by(id=student.s_am_1_id).first()
+            class_am_2 = Class.query.filter_by(id=student.s_am_2_id).first()
+            class_am_3 = Class.query.filter_by(id=student.s_am_3_id).first()
+            class_am_4 = Class.query.filter_by(id=student.s_am_4_id).first()
+            class_am_5 = Class.query.filter_by(id=student.s_am_5_id).first()
+            class_am_6 = Class.query.filter_by(id=student.s_am_6_id).first()
+            class_am_7 = Class.query.filter_by(id=student.s_am_7_id).first()
+            class_pm_1 = Class.query.filter_by(id=student.s_pm_1_id).first()
+            class_pm_2 = Class.query.filter_by(id=student.s_pm_2_id).first()
+            class_pm_3 = Class.query.filter_by(id=student.s_pm_3_id).first()
+            class_pm_4 = Class.query.filter_by(id=student.s_pm_4_id).first()
+            class_pm_5 = Class.query.filter_by(id=student.s_pm_5_id).first()
+            class_pm_6 = Class.query.filter_by(id=student.s_pm_6_id).first()
+            class_pm_7 = Class.query.filter_by(id=student.s_pm_7_id).first()
+            Week_list = []
+            make_week_list(Week_list)
 
+            return render_template('student_cat_class_list.html', Week_list=Week_list, class_am_1=class_am_1,
+                                   class_am_2=class_am_2, class_am_3=class_am_3, class_am_4=class_am_4,
+                                   class_am_5=class_am_5, class_am_6=class_am_6, class_am_7=class_am_7,
+                                   class_pm_1=class_pm_1, class_pm_2=class_pm_2, class_pm_3=class_pm_3,
+                                   class_pm_4=class_pm_4, class_pm_5=class_pm_5, class_pm_6=class_pm_6,
+                                   class_pm_7=class_pm_7)
+
+
+@app.route('/student/cancel_class', methods=['POST'])
+def student_cancel_class():
+    if request.method == 'POST':
+        data = request.get_json()
+        class_id = data['class_id']
+        choose_class = Class.query.filter_by(id=class_id).first()
+        student = Student.query.filter_by(s_u_id=current_user.id).first()
+        student_cancel_selected_class(student, choose_class)
+        return jsonify({'ok': 'yes'})
 
