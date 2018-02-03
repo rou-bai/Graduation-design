@@ -898,13 +898,19 @@ def student_choose_test3():
             return jsonify({'ok': 'yes'})
 
 
-
-
-
-
 @app.route('/student/error_test', methods=['GET'])
 def student_error_test():
     if request.method == 'GET':
         return render_template('student_error_test.html')
 
+@app.route('/student/cat/test_info', methods=['GET'])
+def student_cat_test_info():
+    if request.method == 'GET':
+        student = Student.query.filter_by(s_u_id=current_user.id).first()
+        if student.s_subject == '科目二':
+            test = Test.query.filter_by(id=student.s_test_2_id).first()
+            return render_template('student_cat_test_info.html', test=test)
+        elif student.s_subject == '科目三':
+            test = Test.query.filter_by(id=student.s_test_3_id).first()
+            return render_template('student_cat_test_info.html', test=test)
 
