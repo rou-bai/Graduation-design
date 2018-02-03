@@ -15,7 +15,8 @@ class Student(db.Model):
     s_user = db.relationship('User', back_populates='student')
 
     s_teacher_id = db.Column(db.Integer)
-    s_test_id = db.Column(db.Integer)
+    s_test_2_id = db.Column(db.Integer)
+    s_test_3_id = db.Column(db.Integer)
     s_am_1_id = db.Column(db.Integer)
     s_am_2_id = db.Column(db.Integer)
     s_am_3_id = db.Column(db.Integer)

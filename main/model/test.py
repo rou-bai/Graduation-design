@@ -10,9 +10,11 @@ class Test(db.Model):
     }
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     test_subject = db.Column(db.String(128))
-    test_time = db.Column(db.DateTime)
+    test_time = db.Column(db.Date)
+    sign_start_time = db.Column(db.Date)
+    sign_end_time = db.Column(db.Date)
 
     # test_student = db.relationship('Student', backref='ss_test')
 
     def __repr__(self):
-        return '<报名科目:%r  报名时间:%r>' % (self.test_subject, self.test_time)
+        return '<报名科目:%r  考试时间:%r>' % (self.test_subject, self.test_time)

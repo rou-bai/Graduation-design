@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - 日期选择器layerDate</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="/static/shortcut icon" href="favicon.ico"> <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeIn">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h4 style="width:100%;text-align:center">近期报名通告发布</h4>
+
+                            </div>
+                            <div class="ibox-content">
+
+                                <form class="form-horizontal m-t">
+
+                                     <div class="form-group">
+                                        <label class="col-sm-2 control-label">科目:</label>
+                                        <div class="col-sm-2">
+                                            <input class="subject form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">考试时间：</label>
+                                        <div class="col-sm-10">
+                                            <input id="test" class="laydate-icon form-control layer-date">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">报名开始时间：</label>
+                                        <div class="col-sm-10">
+                                            <input id="start" class="laydate-icon form-control layer-date">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">报名截止时间：</label>
+                                        <div class="col-sm-10">
+                                            <input id="end" class="laydate-icon form-control layer-date">
+                                        </div>
+                                    </div>
+                                    <button class="confirm btn-primary btn-sm m-b">发布</button>
+                                </form>
+                                <hr>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <!-- 全局js -->
+    <script src="/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+<script>
+        //外部js调用
+        laydate({
+            elem: '#test', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+            event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+        });
+
+        //日期范围限制
+        var start = {
+            elem: '#start',
+            format: 'YYYY/MM/DD hh:mm:ss',
+            min: laydate.now(), //设定最小日期为当前日期
+            max: '2099-06-16 23:59:59', //最大日期
+            istime: true,
+            istoday: false,
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#end',
+            format: 'YYYY/MM/DD hh:mm:ss',
+            min: laydate.now(),
+            max: '2099-06-16 23:59:59',
+            istime: true,
+            istoday: false,
+            choose: function (datas) {
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+            }
+        };
+        laydate(start);
+        laydate(end);
+    </script>
+
+
+    <!-- 自定义js -->
+    <script src="/static/js/content.js?v=1.0.0"></script>
+
+
+    <!-- layerDate plugin javascript -->
+    <script src="/static/js/plugins/layer/laydate/laydate.js"></script>
+    <script>
+        //外部js调用
+        laydate({
+            elem: '#test', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+            event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+        });
+
+        //日期范围限制
+        var start = {
+            elem: '#start',
+            format: 'YYYY/MM/DD hh:mm:ss',
+            min: laydate.now(), //设定最小日期为当前日期
+            max: '2099-06-16 23:59:59', //最大日期
+            istime: true,
+            istoday: false,
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#end',
+            format: 'YYYY/MM/DD hh:mm:ss',
+            min: laydate.now(),
+            max: '2099-06-16 23:59:59',
+            istime: true,
+            istoday: false,
+            choose: function (datas) {
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+            }
+        };
+        laydate(start);
+        laydate(end);
+    </script>
+    <script>
+        //外部js调用
+        laydate({
+            elem: '#start', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+            event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+        });
+
+        //日期范围限制
+        var start = {
+            elem: '#start',
+            format: 'YYYY/MM/DD hh:mm:ss',
+            min: laydate.now(), //设定最小日期为当前日期
+            max: '2099-06-16 23:59:59', //最大日期
+            istime: true,
+            istoday: false,
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#end',
+            format: 'YYYY/MM/DD hh:mm:ss',
+            min: laydate.now(),
+            max: '2099-06-16 23:59:59',
+            istime: true,
+            istoday: false,
+            choose: function (datas) {
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+            }
+        };
+        laydate(start);
+        laydate(end);
+    </script>
+    <script>
+        //外部js调用
+        laydate({
+            elem: '#end', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+            event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+        });
+
+        //日期范围限制
+        var start = {
+            elem: '#start',
+            format: 'YYYY/MM/DD hh:mm:ss',
+            min: laydate.now(), //设定最小日期为当前日期
+            max: '2099-06-16 23:59:59', //最大日期
+            istime: true,
+            istoday: false,
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#end',
+            format: 'YYYY/MM/DD hh:mm:ss',
+            min: laydate.now(),
+            max: '2099-06-16 23:59:59',
+            istime: true,
+            istoday: false,
+            choose: function (datas) {
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+            }
+        };
+        laydate(start);
+        laydate(end);
+    </script>
+<script>
+    $(function(){
+        $(".confirm").click(function(){
+
+            var $this = $(this);
+            var btn = $(this);
+            var test_time = $('input#test').val();
+            var sign_start_time = $('input#start').val();
+            var sign_end_time = $('input#end').val();
+            var subject = $('input.subject').val();
+            var data={
+                'test_time':test_time,
+                'sign_start_time': sign_start_time,
+                'sign_end_time': sign_end_time,
+                'subject' : subject};
+
+            $.ajax({
+                url: 'http://127.0.0.1:5000/admin/public/test',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+
+                success:function(data){
+                    if (data.ok === 'yes') {
+                     alert('确定发布该通告吗?');
+                     <!--window.location.href="http://127.0.0.1:5000/student/cat_class_list";-->
+
+
+                     }
+                    else if (data.ok === 'error_subject'){
+                     alert('科目填写类型有误');
+                    }
+                    else if (data.ok === 'data_no'){
+                     alert('日期不能为空');
+                    }
+                    else if (data.ok === 'date_error'){
+                     alert('时间之间不协调');
+                    }
+                    else if (data.ok === 'exist'){
+                     alert('该通告已存在');
+                    }
+
+                    else{
+                    alert('奇怪错误');
+                    }
+                    },
+                error:function(){
+                    alert('未知错误');
+                    }
+
+
+                });
+
+
+            })
+            })
+
+</script>
+
+
+
+
+</body>
+
+</html>

@@ -504,3 +504,15 @@ def student_cancel_selected_class(student, choose_class):
     choose_class.class_limit_people += 1
     db.session.add(choose_class)
     db.session.commit()
+
+
+# 管理员发布考试通告
+def admin_pub_test_time(subject, test_time, sign_start_time, sign_end_time):
+    test = Test(
+        test_subject=subject,
+        test_time=test_time,
+        sign_start_time=sign_start_time,
+        sign_end_time=sign_end_time
+    )
+    db.session.add(test)
+    db.session.commit()

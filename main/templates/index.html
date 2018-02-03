@@ -176,19 +176,36 @@
                         </ul>
                     </li>
                     {% if Admin %}
-                    <li class="line dk"></li>
+                        <li class="line dk"></li>
+                    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-gears"></i> <span class="nav-label">通告管理</span><span class="fa arrow"></span></a>
+
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="/admin/public/test">发布考试通告</a>
+
+                        </ul>
+                        <ul class="nav nav-second-level">
+                           <li><a class="J_menuItem" href="/index_v1">查看科二通告</a>
+                        </ul>
+                        <ul class="nav nav-second-level">
+                           <li><a class="J_menuItem" href="/index_v1">查看科三通告</a>
+                        </ul>
+
+                     <li class="line dk"></li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-gears"></i> <span class="nav-label">后台管理</span><span class="fa arrow"></span></a>
+
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="{{url_for('confirm_admin') }}">进入后台管理</a>
 
                         </ul>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="/index_v1">发布</a>
 
-                        </ul>
+
+
                     {% endif %}
 
 

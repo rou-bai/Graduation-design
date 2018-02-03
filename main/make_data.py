@@ -1,5 +1,6 @@
 from .model.user import User
 from datetime import datetime, date, timedelta
+import time
 
 
 # 选择教练信息展示data封装
@@ -28,3 +29,12 @@ def make_week_list(Week_list):
     for i in range(7):
         Week_list.append(Monday + timedelta(i))
     return Week_list
+
+# 时间格式转换成时间戳
+
+def time_convert_timestamp(change_time):
+    # 转换成时间数组
+    timeArray = time.strptime(change_time, "%Y-%m-%d")
+    # 转换成时间戳
+    timestamp = int(time.mktime(timeArray))
+    return timestamp

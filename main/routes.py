@@ -9,7 +9,7 @@ from hashlib import md5
 from flask_security.utils import login_user, logout_user
 from flask_login import login_required
 from flask_security import current_user
-from .make_data import data_choose_teacher_info, make_week_list
+from .make_data import data_choose_teacher_info, make_week_list, time_convert_timestamp
 from datetime import datetime, date, timedelta
 
 
@@ -44,7 +44,7 @@ def index():
     elif current_user.has_role('Teacher'):
         return render_template('index.html', Student=False, Admin=False, Teacher=True)
     elif current_user.has_role('Admin'):
-        return render_template('index.html', Student=True, Admin=True, Teacher=True)
+        return render_template('index.html', Student=False, Admin=True, Teacher=False)
     elif current_user.is_anonymous:
         return render_template('index.html', Student=True, Admin=False, Teacher=True)
 
@@ -731,3 +731,36 @@ def student_cancel_class():
         student_cancel_selected_class(student, choose_class)
         return jsonify({'ok': 'yes'})
 
+
+@app.route('/admin/public/test', methods=['POST', 'GET'])
+def admin_public_test():
+    if request.method == 'GET':
+        return render_template('admin_pub_test.html')
+    if request.method == 'POST':
+        data = request.get_json()
+        subject = data['subject']
+        test_time = data['test_time']
+        sign_end_time = data['sign_end_time']
+        sign_start_time = data['sign_start_time']
+
+        if subject == '科目二' or subject == '科目三':
+            if test_time != '' and sign_end_time != '' and sign_start_time != '':
+                convert_test_time = time_convert_timestamp(test_time)
+                convert_sign_start_time = time_convert_timestamp(sign_start_time)
+                convert_sign_end_time = time_convert_timestamp(sign_end_time)
+                if convert_sign_start_time < convert_sign_end_time and convert_test_time > convert_sign_end_time:
+                    test = Test.query.filter(Test.test_subject == subject, Test.test_time == test_time).first()
+                    if not test:
+                        admin_pub_test_time(subject, test_time, sign_start_time, sign_end_time)
+                        return jsonify({'ok': 'yes'})
+
+                    else:
+                        return jsonify({'ok': 'exist'})
+                else:
+                    return jsonify({'ok': 'date_error'})
+
+            else:
+                return jsonify({'ok': 'data_no'})
+
+        else:
+            return jsonify({'ok': 'error_subject'})

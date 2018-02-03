@@ -26,14 +26,14 @@
 
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>本周课程安排表</h5>
+                <h5>本周课程安排表: <small>请根据课表准时上课</small></h5>
 
 
             </div>
             <div class="ibox-content">
                 <div class="row row-lg">
                     <div class="col-sm-12">
-                        <h4 class="example-title">本周: {{Week_list[0]}}--{{Week_list[6]}}
+                        <h4 class="example-title" style="width:100%;text-align:center">本周: {{Week_list[0]}}--{{Week_list[6]}}
                             </h4>
                             <table data-toggle="table"  data-height="200" >
                                 <thead>
@@ -63,7 +63,7 @@
 
                                      </tr>
                                      <tr>
-                                         <td></td>
+                                         <td>7:30-12:00</td>
                                          <td>
                                              {% if class_am_1 %}
                                              <a href="" class="am_1 btn-info btn-sm m-b" data-id={{class_am_1.id}}>取消</a>
@@ -100,6 +100,7 @@
                                              {% endif %}
                                          </td>
                                      </tr>
+
                                      <tr>
                                          <td>下午</td>
                                          <td>{{class_pm_1.class_pm}}</td>
@@ -112,7 +113,7 @@
                                      </tr>
 
                                      <tr>
-                                         <td></td>
+                                         <td>13:30-18:00</td>
                                          <td>
                                              {% if class_pm_1 %}
                                              <a href="" class="pm_1 btn-primary btn-sm m-b" data-id={{class_pm_1.id}}>取消</a>
