@@ -13,6 +13,7 @@ class Test(db.Model):
     test_time = db.Column(db.Date)
     sign_start_time = db.Column(db.Date)
     sign_end_time = db.Column(db.Date)
+    sign_number = db.Column(db.Integer)
 
     # test_student = db.relationship('Student', backref='ss_test')
 

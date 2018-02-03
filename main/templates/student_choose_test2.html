@@ -25,7 +25,7 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>科目二已发布通告信息</h5>
+                        <h5>科目二已发布考试信息 <small>(预约报名后不可取消,请考试前领取报名表时缴费)</small></h5>
 
                     </div>
                     <div class="ibox-content">
@@ -37,20 +37,16 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">考试时间:</label>
 
-                                <div class="col-sm-9">
+                                <div class="col-sm-7">
                                     <p class="form-control-static">{{each.test_time}}</p>
                                 </div>
-
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">报名人数:</label>
-
-                                <div class="col-sm-9">
-                                    <p class="form-control-static">{{each.sign_number}}</p>
+                                <div class="col-sm-2">
+                                    <button class="choose btn-primary btn-sm m-b" data-test={{each.id}}>报名</button>
                                 </div>
 
+
                             </div>
+
 
                         </form>
                         {% endfor %}
@@ -62,22 +58,50 @@
 
 
     <!-- 全局js -->
-    <script src="js/jquery.min.js?v=2.1.4"></script>
-    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
 
     <!-- 自定义js -->
-    <script src="js/content.js?v=1.0.0"></script>
+    <script src="/static/js/content.js?v=1.0.0"></script>
 
-    <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });
-    </script>
+
+<!--科二报名-->
+<script>
+    $(function(){
+        $(".choose").click(function(){
+        var $this = $(this);
+        test_id = this.getAttribute("data-test");
+        var data = {
+            "test_id": test_id };
+
+
+        $.ajax({
+                url:'http://127.0.0.1:5000/student/choose_test2',
+                type:'POST',
+                data:JSON.stringify(data),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+                success:function(data){
+                  if (data.ok === 'yes') {
+                      alert('确定报名吗');
+                      <!--window.location.href="http://127.0.0.1:5000/teacher/cat_car_info";-->
+
+                      }
+                   else if (data.ok === 'last'){
+                     alert('您已经报名过了');
+                    }
+                  else{
+                      alert('其他错误');
+                      }},
+
+                error:function(){
+                    alert('未知错误');}
+
+            })
+        })
+    })
+</script>
+
 
 
 

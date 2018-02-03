@@ -512,7 +512,8 @@ def admin_pub_test_time(subject, test_time, sign_start_time, sign_end_time):
         test_subject=subject,
         test_time=test_time,
         sign_start_time=sign_start_time,
-        sign_end_time=sign_end_time
+        sign_end_time=sign_end_time,
+        sign_number=0
     )
     db.session.add(test)
     db.session.commit()

@@ -1,4 +1,4 @@
-2018-02-03 10:25:17,823 ERROR: Exception on /admin/public/test [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+2018-02-03 19:02:26,282 ERROR: Exception on /student/choose_test2 [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,16 +12,33 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 745, in admin_public_test
-    test_time = time_convert_timestamp(test_time)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 829, in student_choose_test2
+    if today > last_test.test_time:
+TypeError: unorderable types: int() > datetime.date()
+2018-02-03 19:07:18,377 ERROR: Exception on /student/choose_test2 [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 829, in student_choose_test2
+    if today > time_convert_timestamp(last_test.test_time):
   File "/home/signit/桌面/Graduation design/main/make_data.py", line 37, in time_convert_timestamp
     timeArray = time.strptime(change_time, "%Y-%m-%d")
   File "/usr/lib/python3.5/_strptime.py", line 504, in _strptime_time
     tt = _strptime(data_string, format)[0]
-  File "/usr/lib/python3.5/_strptime.py", line 343, in _strptime
-    (data_string, format))
-ValueError: time data '' does not match format '%Y-%m-%d'
-2018-02-03 10:26:59,996 ERROR: Exception on /admin/public/test [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+  File "/usr/lib/python3.5/_strptime.py", line 310, in _strptime
+    raise TypeError(msg.format(index, type(arg)))
+TypeError: strptime() argument 0 must be str, not <class 'datetime.date'>
+2018-02-03 19:16:43,447 ERROR: Exception on /student/choose_test3 [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -35,75 +52,6 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 745, in admin_public_test
-    test_time = time_convert_timestamp(test_time)
-  File "/home/signit/桌面/Graduation design/main/make_data.py", line 37, in time_convert_timestamp
-    timeArray = time.strptime(change_time, "%Y-%m")
-  File "/usr/lib/python3.5/_strptime.py", line 504, in _strptime_time
-    tt = _strptime(data_string, format)[0]
-  File "/usr/lib/python3.5/_strptime.py", line 343, in _strptime
-    (data_string, format))
-ValueError: time data '' does not match format '%Y-%m'
-2018-02-03 11:01:11,336 ERROR: Exception on /admin/public/test [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 749, in admin_public_test
-    convert_sign_start_time = time_convert_timestamp(sign_start_time)
-  File "/home/signit/桌面/Graduation design/main/make_data.py", line 37, in time_convert_timestamp
-    timeArray = time.strptime(change_time, "%Y-%m-%d")
-  File "/usr/lib/python3.5/_strptime.py", line 504, in _strptime_time
-    tt = _strptime(data_string, format)[0]
-  File "/usr/lib/python3.5/_strptime.py", line 343, in _strptime
-    (data_string, format))
-ValueError: time data '' does not match format '%Y-%m-%d'
-2018-02-03 11:02:36,669 ERROR: Exception on /admin/public/test [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 748, in admin_public_test
-    convert_test_time = time_convert_timestamp(test_time)
-  File "/home/signit/桌面/Graduation design/main/make_data.py", line 37, in time_convert_timestamp
-    timeArray = time.strptime(change_time, "%Y-%m-%d")
-  File "/usr/lib/python3.5/_strptime.py", line 504, in _strptime_time
-    tt = _strptime(data_string, format)[0]
-  File "/usr/lib/python3.5/_strptime.py", line 343, in _strptime
-    (data_string, format))
-ValueError: time data '' does not match format '%Y-%m-%d'
-2018-02-03 11:05:37,799 ERROR: Exception on /admin/public/test [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 752, in admin_public_test
-    test = Test.query.filte(Test.test_subject == subject, Test.test_time == test_time,
-AttributeError: 'BaseQuery' object has no attribute 'filte'
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 895, in student_choose_test3
+    test.sign_number += 1
+AttributeError: 'NoneType' object has no attribute 'sign_number'

@@ -750,12 +750,18 @@ def admin_public_test():
                 convert_sign_end_time = time_convert_timestamp(sign_end_time)
                 if convert_sign_start_time < convert_sign_end_time and convert_test_time > convert_sign_end_time:
                     test = Test.query.filter(Test.test_subject == subject, Test.test_time == test_time).first()
-                    if not test:
-                        admin_pub_test_time(subject, test_time, sign_start_time, sign_end_time)
-                        return jsonify({'ok': 'yes'})
+                    today = str(date.today())
 
+                    today = time_convert_timestamp(today)
+                    if today < convert_test_time:
+                        if not test:
+                            admin_pub_test_time(subject, test_time, sign_start_time, sign_end_time)
+                            return jsonify({'ok': 'yes'})
+
+                        else:
+                            return jsonify({'ok': 'exist'})
                     else:
-                        return jsonify({'ok': 'exist'})
+                        return jsonify({'ok': 'time_pass'})
                 else:
                     return jsonify({'ok': 'date_error'})
 
@@ -764,3 +770,141 @@ def admin_public_test():
 
         else:
             return jsonify({'ok': 'error_subject'})
+
+
+@app.route('/admin/cat/test2', methods=['GET'])
+def admin_cat_test2():
+    if request.method == 'GET':
+        today = str(date.today())
+        today = time_convert_timestamp(today)
+        test_all = Test.query.filter(Test.test_subject == '科目二').all()
+        test = []
+        for each in test_all:
+            if time_convert_timestamp(str(each.test_time)) > today:
+                test.append(each)
+
+
+        return render_template('admin_cat_test2.html', test=test)
+
+@app.route('/admin/cat/test3', methods=['GET'])
+def admin_cat_test3():
+    if request.method == 'GET':
+        today = str(date.today())
+        today = time_convert_timestamp(today)
+        test_all = Test.query.filter(Test.test_subject == '科目三').all()
+        test = []
+        for each in test_all:
+            if time_convert_timestamp(str(each.test_time)) > today:
+                test.append(each)
+                print(each.sign_number)
+
+        return render_template('admin_cat_test3.html', test=test)
+
+@app.route('/student/choose_test2', methods=['GET', 'POST'])
+def student_choose_test2():
+    if request.method == 'GET':
+        if current_user.is_anonymous:
+            return redirect(url_for('unlogin'))
+        else:
+            student = Student.query.filter_by(s_u_id=current_user.id).first()
+            if student.s_subject != '科目二':
+                return redirect(url_for('student_error_test'))
+            elif student.s_subject == '科目二':
+                today = str(date.today())
+                today = time_convert_timestamp(today)
+                test_all = Test.query.filter(Test.test_subject == '科目二').all()
+                test = []
+                for each in test_all:
+                    if time_convert_timestamp(str(each.test_time)) > today:
+                        test.append(each)
+                return render_template('student_choose_test2.html', test=test)
+    if request.method == 'POST':
+        data = request.get_json()
+        test_id = data['test_id']
+        student = Student.query.filter_by(s_u_id=current_user.id).first()
+        test = Test.query.filter_by(id=test_id).first()
+        if student.s_test_2_id:
+            today = str(date.today())
+            today = time_convert_timestamp(today)
+            last_test = Test.query.filter_by(id=student.s_test_2_id).first()
+            if today > time_convert_timestamp(str(last_test.test_time)):
+                student.s_test_2_id = test_id
+                db.session.add(student)
+                db.session.commit()
+                test.sign_number += 1
+                db.session.add(test)
+                db.session.commit()
+
+                return jsonify({'ok': 'yes'})
+            else:
+                return jsonify({'ok': 'last'})
+        else:
+            student.s_test_2_id = test_id
+            db.session.add(student)
+            db.session.commit()
+            test.sign_number += 1
+            db.session.add(test)
+            db.session.commit()
+            return jsonify({'ok': 'yes'})
+
+
+
+
+@app.route('/student/choose_test3', methods=['GET', 'POST'])
+def student_choose_test3():
+    if request.method == 'GET':
+        if current_user.is_anonymous:
+            return redirect(url_for('unlogin'))
+        else:
+            student = Student.query.filter_by(s_u_id=current_user.id).first()
+            if student.s_subject != '科目三':
+                return redirect(url_for('student_error_test'))
+            elif student.s_subject == '科目三':
+                today = str(date.today())
+                today = time_convert_timestamp(today)
+                test_all = Test.query.filter(Test.test_subject == '科目三').all()
+                test = []
+                for each in test_all:
+                    if time_convert_timestamp(str(each.test_time)) > today:
+                        test.append(each)
+                return render_template('student_choose_test3.html', test=test)
+    if request.method == 'POST':
+        data = request.get_json()
+        test_id = data['test_id']
+        student = Student.query.filter_by(s_u_id=current_user.id).first()
+        test = Test.query.filter_by(id=test_id).first()
+        if student.s_test_3_id:
+            today = str(date.today())
+            today = time_convert_timestamp(today)
+            last_test = Test.query.filter_by(id=student.s_test_3_id).first()
+            if today > time_convert_timestamp(str(last_test.test_time)):
+                student.s_test_3_id = test_id
+                db.session.add(student)
+                db.session.commit()
+                test.sign_number += 1
+                db.session.add(test)
+                db.session.commit()
+
+                return jsonify({'ok': 'yes'})
+            else:
+                return jsonify({'ok': 'last'})
+        else:
+            student.s_test_3_id = test_id
+            db.session.add(student)
+            db.session.commit()
+            test.sign_number += 1
+            db.session.add(test)
+            db.session.commit()
+            return jsonify({'ok': 'yes'})
+
+
+
+
+
+
+@app.route('/student/error_test', methods=['GET'])
+def student_error_test():
+    if request.method == 'GET':
+        return render_template('student_error_test.html')
+
+
