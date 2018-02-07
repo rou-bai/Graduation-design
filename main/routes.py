@@ -642,7 +642,7 @@ def student_choose_class():
                     s_am_7 = Student.query.filter(Student.s_am_7_id == class_am_7.id,
                                                   Student.s_u_id == current_user.id).first()
                 else:
-                    s_am_6 = False
+                    s_am_7 = False
                 class_pm_7 = Class.query.filter(Class.class_time == Week_list[6], Class.class_am == None,
                                                 Class.class_teacher_id == teacher.id).first()
                 if class_pm_7:
@@ -695,23 +695,24 @@ def student_cat_class_list():
         if current_user.is_anonymous:
             return redirect(url_for('handle_unlogin_request'))
         else:
-            student = Student.query.filter_by(s_u_id=current_user.id).first()
-            class_am_1 = Class.query.filter_by(id=student.s_am_1_id).first()
-            class_am_2 = Class.query.filter_by(id=student.s_am_2_id).first()
-            class_am_3 = Class.query.filter_by(id=student.s_am_3_id).first()
-            class_am_4 = Class.query.filter_by(id=student.s_am_4_id).first()
-            class_am_5 = Class.query.filter_by(id=student.s_am_5_id).first()
-            class_am_6 = Class.query.filter_by(id=student.s_am_6_id).first()
-            class_am_7 = Class.query.filter_by(id=student.s_am_7_id).first()
-            class_pm_1 = Class.query.filter_by(id=student.s_pm_1_id).first()
-            class_pm_2 = Class.query.filter_by(id=student.s_pm_2_id).first()
-            class_pm_3 = Class.query.filter_by(id=student.s_pm_3_id).first()
-            class_pm_4 = Class.query.filter_by(id=student.s_pm_4_id).first()
-            class_pm_5 = Class.query.filter_by(id=student.s_pm_5_id).first()
-            class_pm_6 = Class.query.filter_by(id=student.s_pm_6_id).first()
-            class_pm_7 = Class.query.filter_by(id=student.s_pm_7_id).first()
             Week_list = []
             make_week_list(Week_list)
+            student = Student.query.filter_by(s_u_id=current_user.id).first()
+            class_am_1 = Class.query.filter(Class.id == student.s_am_1_id, Class.class_time == Week_list[0]).first()
+            class_am_2 = Class.query.filter(Class.id == student.s_am_2_id, Class.class_time == Week_list[1]).first()
+            class_am_3 = Class.query.filter(Class.id == student.s_am_3_id, Class.class_time == Week_list[2]).first()
+            class_am_4 = Class.query.filter(Class.id == student.s_am_4_id, Class.class_time == Week_list[3]).first()
+            class_am_5 = Class.query.filter(Class.id == student.s_am_5_id, Class.class_time == Week_list[4]).first()
+            class_am_6 = Class.query.filter(Class.id == student.s_am_6_id, Class.class_time == Week_list[5]).first()
+            class_am_7 = Class.query.filter(Class.id == student.s_am_7_id, Class.class_time == Week_list[6]).first()
+            class_pm_1 = Class.query.filter(Class.id == student.s_pm_1_id, Class.class_time == Week_list[0]).first()
+            class_pm_2 = Class.query.filter(Class.id == student.s_pm_2_id, Class.class_time == Week_list[1]).first()
+            class_pm_3 = Class.query.filter(Class.id == student.s_pm_3_id, Class.class_time == Week_list[2]).first()
+            class_pm_4 = Class.query.filter(Class.id == student.s_pm_4_id, Class.class_time == Week_list[3]).first()
+            class_pm_5 = Class.query.filter(Class.id == student.s_pm_5_id, Class.class_time == Week_list[4]).first()
+            class_pm_6 = Class.query.filter(Class.id == student.s_pm_6_id, Class.class_time == Week_list[5]).first()
+            class_pm_7 = Class.query.filter(Class.id == student.s_pm_7_id, Class.class_time == Week_list[6]).first()
+
 
             return render_template('student_cat_class_list.html', Week_list=Week_list, class_am_1=class_am_1,
                                    class_am_2=class_am_2, class_am_3=class_am_3, class_am_4=class_am_4,
@@ -783,8 +784,8 @@ def admin_cat_test2():
             if time_convert_timestamp(str(each.test_time)) > today:
                 test.append(each)
 
-
         return render_template('admin_cat_test2.html', test=test)
+
 
 @app.route('/admin/cat/test3', methods=['GET'])
 def admin_cat_test3():
@@ -799,6 +800,7 @@ def admin_cat_test3():
                 print(each.sign_number)
 
         return render_template('admin_cat_test3.html', test=test)
+
 
 @app.route('/student/choose_test2', methods=['GET', 'POST'])
 def student_choose_test2():
@@ -846,8 +848,6 @@ def student_choose_test2():
             db.session.add(test)
             db.session.commit()
             return jsonify({'ok': 'yes'})
-
-
 
 
 @app.route('/student/choose_test3', methods=['GET', 'POST'])
@@ -903,14 +903,48 @@ def student_error_test():
     if request.method == 'GET':
         return render_template('student_error_test.html')
 
+
 @app.route('/student/cat/test_info', methods=['GET'])
 def student_cat_test_info():
     if request.method == 'GET':
-        student = Student.query.filter_by(s_u_id=current_user.id).first()
-        if student.s_subject == '科目二':
-            test = Test.query.filter_by(id=student.s_test_2_id).first()
-            return render_template('student_cat_test_info.html', test=test)
-        elif student.s_subject == '科目三':
-            test = Test.query.filter_by(id=student.s_test_3_id).first()
-            return render_template('student_cat_test_info.html', test=test)
+        if request.method == 'GET':
+            if current_user.is_anonymous:
+                return redirect(url_for('unlogin'))
+            else:
+                student = Student.query.filter_by(s_u_id=current_user.id).first()
+                if student.s_subject == '科目二':
+                    test = Test.query.filter_by(id=student.s_test_2_id).first()
+                    return render_template('student_cat_test_info.html', test=test)
+                elif student.s_subject == '科目三':
+                    test = Test.query.filter_by(id=student.s_test_3_id).first()
+                    return render_template('student_cat_test_info.html', test=test)
 
+
+@app.route('/teacher/cat/student_process', methods=['GET'])
+def teacher_cat_student_process():
+    if request.method == 'GET':
+        if request.method == 'GET':
+            if current_user.is_anonymous:
+                return redirect(url_for('unlogin'))
+            else:
+                teacher = Teacher.query.filter_by(t_u_id=current_user.id).first()
+                student = Student.query.filter_by(s_teacher_id=teacher.id).all()
+                process = {}
+                n = 0
+
+                for each in student:
+                    new_user = User.query.filter_by(id=each.s_u_id).first()
+                    if each.s_subject == '科目二':
+                        new_test = Test.query.filter_by(id=each.s_test_2_id).first()
+                    if each.s_subject == '科目三':
+                        new_test = Test.query.filter_by(id=each.s_test_3_id).first()
+                    process.setdefault(n, [])
+                    process[n].append(new_user)
+                    process[n].append(each)
+                    process[n].append(new_test)
+                    n += 1
+
+
+                print(process)
+
+                return render_template('teacher_cat_student_process.html', process=process)
