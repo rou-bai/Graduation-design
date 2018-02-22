@@ -51,7 +51,12 @@ def index():
 
 @app.route('/index_v1', methods=['POST', 'GET'])
 def index_v1():
-    return render_template('index_v1.html')
+    test_all_3 = Test.query.filter(Test.test_subject == '科目三').order_by(db.desc(Test.test_time)).all()
+    test_all_3 = test_all_3[:3]
+
+    test_all_2 = Test.query.filter(Test.test_subject == '科目二').order_by(db.desc(Test.test_time)).all()
+    test_all_2 = test_all_2[:3]
+    return render_template('index_v1.html', test_all_2=test_all_2, test_all_3=test_all_3)
 
 
 @app.route('/regist', methods=['POST', 'GET'])
@@ -709,7 +714,7 @@ def student_cat_class_list():
             class_pm_2 = Class.query.filter(Class.id == student.s_pm_2_id, Class.class_time == Week_list[1]).first()
             class_pm_3 = Class.query.filter(Class.id == student.s_pm_3_id, Class.class_time == Week_list[2]).first()
             class_pm_4 = Class.query.filter(Class.id == student.s_pm_4_id, Class.class_time == Week_list[3]).first()
-            class_pm_5 = Class.query.filter(Class.id == student.s_pm_5_id, Class.class_time == Week_list[4]).first()
+            class_pm_5 = Class.query.filter(Class.id == student.s_pm_5_id, Class.s.class_time == Week_list[4]).first()
             class_pm_6 = Class.query.filter(Class.id == student.s_pm_6_id, Class.class_time == Week_list[5]).first()
             class_pm_7 = Class.query.filter(Class.id == student.s_pm_7_id, Class.class_time == Week_list[6]).first()
 
@@ -778,7 +783,8 @@ def admin_cat_test2():
     if request.method == 'GET':
         today = str(date.today())
         today = time_convert_timestamp(today)
-        test_all = Test.query.filter(Test.test_subject == '科目二').all()
+        test_all = Test.query.filter(Test.test_subject == '科目二').order_by(db.desc(Test.test_time)).all()
+        test_all = test_all[:8]
         test = []
         for each in test_all:
             if time_convert_timestamp(str(each.test_time)) > today:
@@ -792,7 +798,8 @@ def admin_cat_test3():
     if request.method == 'GET':
         today = str(date.today())
         today = time_convert_timestamp(today)
-        test_all = Test.query.filter(Test.test_subject == '科目三').all()
+        test_all = Test.query.filter(Test.test_subject == '科目三').order_by(db.desc(Test.test_time)).all()
+        test_all = test_all[:8]
         test = []
         for each in test_all:
             if time_convert_timestamp(str(each.test_time)) > today:
@@ -825,29 +832,39 @@ def student_choose_test2():
         test_id = data['test_id']
         student = Student.query.filter_by(s_u_id=current_user.id).first()
         test = Test.query.filter_by(id=test_id).first()
+        today = str(date.today())
+        today = time_convert_timestamp(today)
         if student.s_test_2_id:
-            today = str(date.today())
-            today = time_convert_timestamp(today)
+
             last_test = Test.query.filter_by(id=student.s_test_2_id).first()
-            if today > time_convert_timestamp(str(last_test.test_time)):
+            if today > time_convert_timestamp(str(test.sign_start_time)) and time_convert_timestamp(
+                    str(test.sign_end_time)):
+                if today > time_convert_timestamp(str(last_test.test_time)):
+                    student.s_test_2_id = test_id
+                    db.session.add(student)
+                    db.session.commit()
+                    test.sign_number += 1
+                    db.session.add(test)
+                    db.session.commit()
+
+                    return jsonify({'ok': 'yes'})
+                else:
+                    return jsonify({'ok': 'last'})
+            else:
+                return jsonify({'ok': 'error_sign_time'})
+        else:
+            if today > time_convert_timestamp(str(test.sign_start_time)) and time_convert_timestamp(
+                    str(test.sign_end_time)):
                 student.s_test_2_id = test_id
                 db.session.add(student)
                 db.session.commit()
                 test.sign_number += 1
                 db.session.add(test)
                 db.session.commit()
-
                 return jsonify({'ok': 'yes'})
             else:
-                return jsonify({'ok': 'last'})
-        else:
-            student.s_test_2_id = test_id
-            db.session.add(student)
-            db.session.commit()
-            test.sign_number += 1
-            db.session.add(test)
-            db.session.commit()
-            return jsonify({'ok': 'yes'})
+                return jsonify({'ok': 'error_sign_time'})
+
 
 
 @app.route('/student/choose_test3', methods=['GET', 'POST'])
@@ -873,29 +890,36 @@ def student_choose_test3():
         test_id = data['test_id']
         student = Student.query.filter_by(s_u_id=current_user.id).first()
         test = Test.query.filter_by(id=test_id).first()
+        today = str(date.today())
+        today = time_convert_timestamp(today)
         if student.s_test_3_id:
-            today = str(date.today())
-            today = time_convert_timestamp(today)
             last_test = Test.query.filter_by(id=student.s_test_3_id).first()
-            if today > time_convert_timestamp(str(last_test.test_time)):
+            if today > time_convert_timestamp(str(test.sign_start_time)) and time_convert_timestamp(str(test.sign_end_time)):
+                if today > time_convert_timestamp(str(last_test.test_time)):
+                    student.s_test_3_id = test_id
+                    db.session.add(student)
+                    db.session.commit()
+                    test.sign_number += 1
+                    db.session.add(test)
+                    db.session.commit()
+
+                    return jsonify({'ok': 'yes'})
+                else:
+                    return jsonify({'ok': 'last'})
+            else:
+                return jsonify({'ok': 'error_sign_time'})
+        else:
+            if today > time_convert_timestamp(str(test.sign_start_time)) and time_convert_timestamp(
+                    str(test.sign_end_time)):
                 student.s_test_3_id = test_id
                 db.session.add(student)
                 db.session.commit()
                 test.sign_number += 1
                 db.session.add(test)
                 db.session.commit()
-
                 return jsonify({'ok': 'yes'})
             else:
-                return jsonify({'ok': 'last'})
-        else:
-            student.s_test_3_id = test_id
-            db.session.add(student)
-            db.session.commit()
-            test.sign_number += 1
-            db.session.add(test)
-            db.session.commit()
-            return jsonify({'ok': 'yes'})
+                return jsonify({'ok': 'error_sign_time'})
 
 
 @app.route('/student/error_test', methods=['GET'])
@@ -943,8 +967,5 @@ def teacher_cat_student_process():
                     process[n].append(each)
                     process[n].append(new_test)
                     n += 1
-
-
-                print(process)
 
                 return render_template('teacher_cat_student_process.html', process=process)

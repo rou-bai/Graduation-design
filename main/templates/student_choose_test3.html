@@ -103,6 +103,9 @@
                    else if (data.ok === 'last'){
                      alert('您已经报名过了');
                     }
+                    else if (data.ok === 'error_sign_time'){
+                     alert('当前时间不在预约报名时段内');
+                    }
                   else{
                       alert('其他错误');
                       }},
