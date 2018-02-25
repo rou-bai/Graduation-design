@@ -714,7 +714,7 @@ def student_cat_class_list():
             class_pm_2 = Class.query.filter(Class.id == student.s_pm_2_id, Class.class_time == Week_list[1]).first()
             class_pm_3 = Class.query.filter(Class.id == student.s_pm_3_id, Class.class_time == Week_list[2]).first()
             class_pm_4 = Class.query.filter(Class.id == student.s_pm_4_id, Class.class_time == Week_list[3]).first()
-            class_pm_5 = Class.query.filter(Class.id == student.s_pm_5_id, Class.s.class_time == Week_list[4]).first()
+            class_pm_5 = Class.query.filter(Class.id == student.s_pm_5_id, Class.class_time == Week_list[4]).first()
             class_pm_6 = Class.query.filter(Class.id == student.s_pm_6_id, Class.class_time == Week_list[5]).first()
             class_pm_7 = Class.query.filter(Class.id == student.s_pm_7_id, Class.class_time == Week_list[6]).first()
 

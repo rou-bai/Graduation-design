@@ -1,130 +1,4 @@
-2018-02-03 15:30:04,826 ERROR: Exception on /admin/cat/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 780, in admin_cat_test2
-    test = Test.query.filter(time_convert_timestamp(Test.test_time) > convert_time,
-  File "/home/signit/桌面/Graduation design/main/make_data.py", line 37, in time_convert_timestamp
-    timeArray = time.strptime(change_time, "%Y-%m-%d")
-  File "/usr/lib/python3.5/_strptime.py", line 504, in _strptime_time
-    tt = _strptime(data_string, format)[0]
-  File "/usr/lib/python3.5/_strptime.py", line 310, in _strptime
-    raise TypeError(msg.format(index, type(arg)))
-TypeError: strptime() argument 0 must be str, not <class 'sqlalchemy.orm.attributes.InstrumentedAttribute'>
-2018-02-03 15:31:12,888 ERROR: Exception on /admin/cat/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 780, in admin_cat_test2
-    test = Test.query.filter(time_convert_timestamp(Test.test_time) > today,
-  File "/home/signit/桌面/Graduation design/main/make_data.py", line 37, in time_convert_timestamp
-    timeArray = time.strptime(change_time, "%Y-%m-%d")
-  File "/usr/lib/python3.5/_strptime.py", line 504, in _strptime_time
-    tt = _strptime(data_string, format)[0]
-  File "/usr/lib/python3.5/_strptime.py", line 310, in _strptime
-    raise TypeError(msg.format(index, type(arg)))
-TypeError: strptime() argument 0 must be str, not <class 'sqlalchemy.orm.attributes.InstrumentedAttribute'>
-2018-02-03 15:31:40,419 ERROR: Exception on /admin/cat/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 780, in admin_cat_test2
-    test = Test.query.filter(time_convert_timestamp(Test.test_time) > today,
-  File "/home/signit/桌面/Graduation design/main/make_data.py", line 37, in time_convert_timestamp
-    timeArray = time.strptime(change_time, "%Y-%m-%d")
-  File "/usr/lib/python3.5/_strptime.py", line 504, in _strptime_time
-    tt = _strptime(data_string, format)[0]
-  File "/usr/lib/python3.5/_strptime.py", line 310, in _strptime
-    raise TypeError(msg.format(index, type(arg)))
-TypeError: strptime() argument 0 must be str, not <class 'sqlalchemy.orm.attributes.InstrumentedAttribute'>
-2018-02-03 15:39:31,245 ERROR: Exception on /admin/cat/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 783, in admin_cat_test2
-    if time_convert_timestamp(each.test_time) > today:
-  File "/home/signit/桌面/Graduation design/main/make_data.py", line 37, in time_convert_timestamp
-    timeArray = time.strptime(change_time, "%Y-%m-%d")
-  File "/usr/lib/python3.5/_strptime.py", line 504, in _strptime_time
-    tt = _strptime(data_string, format)[0]
-  File "/usr/lib/python3.5/_strptime.py", line 310, in _strptime
-    raise TypeError(msg.format(index, type(arg)))
-TypeError: strptime() argument 0 must be str, not <class 'datetime.date'>
-2018-02-03 15:58:33,976 ERROR: Exception on /admin/cat/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 785, in admin_cat_test2
-    print(each.test_number)
-AttributeError: 'Test' object has no attribute 'test_number'
-2018-02-03 17:50:24,029 ERROR: Exception on /student/choose_test2 [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/signit/桌面/Graduation design/main/routes.py", line 839, in student_choose_test2
-    db.commit()
-AttributeError: 'SQLAlchemy' object has no attribute 'commit'
-2018-02-03 19:01:56,479 ERROR: Exception on /student/choose_test2 [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+2018-02-03 19:02:26,282 ERROR: Exception on /student/choose_test2 [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -141,3 +15,128 @@ Traceback (most recent call last):
   File "/home/signit/桌面/Graduation design/main/routes.py", line 829, in student_choose_test2
     if today > last_test.test_time:
 TypeError: unorderable types: int() > datetime.date()
+2018-02-03 19:07:18,377 ERROR: Exception on /student/choose_test2 [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 829, in student_choose_test2
+    if today > time_convert_timestamp(last_test.test_time):
+  File "/home/signit/桌面/Graduation design/main/make_data.py", line 37, in time_convert_timestamp
+    timeArray = time.strptime(change_time, "%Y-%m-%d")
+  File "/usr/lib/python3.5/_strptime.py", line 504, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "/usr/lib/python3.5/_strptime.py", line 310, in _strptime
+    raise TypeError(msg.format(index, type(arg)))
+TypeError: strptime() argument 0 must be str, not <class 'datetime.date'>
+2018-02-03 19:16:43,447 ERROR: Exception on /student/choose_test3 [POST] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 895, in student_choose_test3
+    test.sign_number += 1
+AttributeError: 'NoneType' object has no attribute 'sign_number'
+2018-02-07 10:19:44,754 ERROR: Exception on /student/choose_class [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 666, in student_choose_class
+    s_am_5=s_am_5, s_pm_5=s_pm_5, s_am_6=s_am_6, s_pm_6=s_pm_6, s_am_7=s_am_7,
+UnboundLocalError: local variable 's_am_7' referenced before assignment
+2018-02-07 10:19:45,938 ERROR: Exception on /student/choose_class [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 666, in student_choose_class
+    s_am_5=s_am_5, s_pm_5=s_pm_5, s_am_6=s_am_6, s_pm_6=s_pm_6, s_am_7=s_am_7,
+UnboundLocalError: local variable 's_am_7' referenced before assignment
+2018-02-07 10:20:33,184 ERROR: Exception on /student/choose_class [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 666, in student_choose_class
+    s_am_5=s_am_5, s_pm_5=s_pm_5, s_am_6=s_am_6, s_pm_6=s_pm_6, s_am_7=s_am_7,
+UnboundLocalError: local variable 's_am_7' referenced before assignment
+2018-02-18 11:24:32,321 ERROR: Exception on /admin/cat/test2 [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 781, in admin_cat_test2
+    test_all = Test.query.filter(Test.test_subject == '科目二').order_by(db.sesc(Test.test_time)).all()
+AttributeError: 'SQLAlchemy' object has no attribute 'sesc'
+2018-02-22 13:34:10,039 ERROR: Exception on /student/cat_class_list [GET] [in /usr/local/lib/python3.5/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/signit/桌面/Graduation design/main/routes.py", line 717, in student_cat_class_list
+    class_pm_5 = Class.query.filter(Class.id == student.s_pm_5_id, Class.s.class_time == Week_list[4]).first()
+AttributeError: type object 'Class' has no attribute 's'

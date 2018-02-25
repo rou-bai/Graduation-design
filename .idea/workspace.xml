@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2fa90e3-7f7a-45e5-815d-724154df5e43" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/main/static/img/j1.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/main/static/img/j2.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/main/static/img/j3.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/main/static/img/j4.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/main/static/img/swust.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/tests/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app.log" afterPath="$PROJECT_DIR$/app.log" />
-      <change beforePath="$PROJECT_DIR$/main/admin.py" afterPath="$PROJECT_DIR$/main/admin.py" />
+      <change beforePath="$PROJECT_DIR$/app.log.1" afterPath="$PROJECT_DIR$/app.log.1" />
       <change beforePath="$PROJECT_DIR$/main/routes.py" afterPath="$PROJECT_DIR$/main/routes.py" />
-      <change beforePath="$PROJECT_DIR$/main/templates/admin_cat_test2.html" afterPath="$PROJECT_DIR$/main/templates/admin_cat_test2.html" />
-      <change beforePath="$PROJECT_DIR$/main/templates/admin_cat_test3.html" afterPath="$PROJECT_DIR$/main/templates/admin_cat_test3.html" />
-      <change beforePath="$PROJECT_DIR$/main/templates/index.html" afterPath="$PROJECT_DIR$/main/templates/index.html" />
       <change beforePath="$PROJECT_DIR$/main/templates/index_v1.html" afterPath="$PROJECT_DIR$/main/templates/index_v1.html" />
-      <change beforePath="$PROJECT_DIR$/main/templates/student_choose_test2.html" afterPath="$PROJECT_DIR$/main/templates/student_choose_test2.html" />
-      <change beforePath="$PROJECT_DIR$/main/templates/student_choose_test3.html" afterPath="$PROJECT_DIR$/main/templates/student_choose_test3.html" />
-      <change beforePath="$PROJECT_DIR$/tests/hashTest.py" afterPath="$PROJECT_DIR$/tests/hashTest.py" />
     </list>
     <ignored path="WSPrinterServer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,29 +41,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="865" column="57" lean-forward="false" selection-start-line="865" selection-start-column="57" selection-end-line="865" selection-end-column="57" />
+            <state relative-caret-position="5599">
+              <caret line="716" column="80" lean-forward="true" selection-start-line="716" selection-start-column="80" selection-end-line="716" selection-end-column="80" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index_v1.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="choose_teacher.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/templates/choose_teacher.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index_v1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/templates/index_v1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="29" column="122" lean-forward="false" selection-start-line="29" selection-start-column="122" selection-end-line="29" selection-end-column="122" />
+            <state relative-caret-position="216">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#12673#12679#0" expanded="true" />
-                <element signature="e#12684#12690#0" expanded="true" />
-                <element signature="e#12734#12740#0" expanded="true" />
-                <element signature="e#12740#12746#0" expanded="true" />
-                <element signature="e#12746#12752#0" expanded="true" />
+                <element signature="e#12460#12466#0" expanded="true" />
+                <element signature="e#12471#12477#0" expanded="true" />
+                <element signature="e#12521#12527#0" expanded="true" />
+                <element signature="e#12527#12533#0" expanded="true" />
+                <element signature="e#12533#12539#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,9 +160,9 @@
         <option value="$PROJECT_DIR$/main/templates/index.html" />
         <option value="$PROJECT_DIR$/main/admin.py" />
         <option value="$PROJECT_DIR$/main/templates/student_choose_test3.html" />
-        <option value="$PROJECT_DIR$/main/routes.py" />
         <option value="$PROJECT_DIR$/main/templates/student_choose_test2.html" />
         <option value="$PROJECT_DIR$/main/templates/index_v1.html" />
+        <option value="$PROJECT_DIR$/main/routes.py" />
       </list>
     </option>
   </component>
@@ -175,7 +172,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="73" />
     <option name="y" value="90" />
     <option name="width" value="1301" />
@@ -236,8 +233,7 @@
               <item name="WSPrinterServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="Graduation design" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -633,12 +629,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="73" y="90" width="1301" height="688" extended-state="1" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="7" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27109376" sideWeight="0.8583765" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27109376" sideWeight="0.8583765" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35813954" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2846975" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24767801" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32637572" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24979591" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -969,13 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/templates/choose_teacher.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="30" column="30" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/model/user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-80">
@@ -1094,27 +1083,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/routes.py">
+    <entry file="file://$PROJECT_DIR$/main/templates/index_v1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="865" column="57" lean-forward="false" selection-start-line="865" selection-start-column="57" selection-end-line="865" selection-end-column="57" />
+        <state relative-caret-position="216">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#12460#12466#0" expanded="true" />
+            <element signature="e#12471#12477#0" expanded="true" />
+            <element signature="e#12521#12527#0" expanded="true" />
+            <element signature="e#12527#12533#0" expanded="true" />
+            <element signature="e#12533#12539#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/templates/choose_teacher.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/templates/index_v1.html">
+    <entry file="file://$PROJECT_DIR$/main/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="29" column="122" lean-forward="false" selection-start-line="29" selection-start-column="122" selection-end-line="29" selection-end-column="122" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#12673#12679#0" expanded="true" />
-            <element signature="e#12684#12690#0" expanded="true" />
-            <element signature="e#12734#12740#0" expanded="true" />
-            <element signature="e#12740#12746#0" expanded="true" />
-            <element signature="e#12746#12752#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="5599">
+          <caret line="716" column="80" lean-forward="true" selection-start-line="716" selection-start-column="80" selection-end-line="716" selection-end-column="80" />
+          <folding />
         </state>
       </provider>
     </entry>
